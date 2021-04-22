@@ -58,6 +58,9 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
+            user = User.objects.get(username=username)
+            profile = Profile(user=user)
+            profile.save()
             messages.success(request, f'Account created for {username}, You can now Log In!')
             return redirect('login')
     else:
@@ -84,7 +87,7 @@ def index(request):
 @login_required(login_url='/')
 def profile(request):
     user_info = UserUpdateForm(instance=request.user)
-    profile_info = ProfileUpdateForm()
+    profile_info = ProfileUpdateForm(instance=request.user.profile)
     return render(request, "meet/profile.html", {
     "user_info": user_info, "profile_info": profile_info
     })
