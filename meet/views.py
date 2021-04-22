@@ -57,6 +57,6 @@ def logout_view(request):
     messages.success(request, 'You have been logged out!')
     return HttpResponseRedirect(reverse("login"))
 
-
+@login_required(login_url='/')
 def index(request):
     return render(request, "meet/index.html")
