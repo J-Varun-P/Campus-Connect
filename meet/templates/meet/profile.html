@@ -3,10 +3,17 @@
 {% block body %}
   <div class="fc">
     <div class="form_update" id="profile_info">
-      <p>{{ user.username }}</p>
-      <p>{{ user.email }}</p>
+      <h4>{{ user.username }}</h4>
+      <p>{{ user.profile.description }}</p>
     </div>
-    <form method="POST" class="form_update">
+    {% if messages %}
+          {% for message in messages %}
+            <div class="alert {{ message.tags }} form_update center">
+              {{ message }}
+            </div>
+          {% endfor %}
+    {% endif %}
+    <form method="POST" class="form_update" id="profile_form">
         {% csrf_token %}
         <fieldset class="form-group">
             <legend>Profile Info</legend>

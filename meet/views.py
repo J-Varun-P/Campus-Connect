@@ -86,8 +86,26 @@ def index(request):
 
 @login_required(login_url='/')
 def profile(request):
-    user_info = UserUpdateForm(instance=request.user)
-    profile_info = ProfileUpdateForm(instance=request.user.profile)
-    return render(request, "meet/profile.html", {
-    "user_info": user_info, "profile_info": profile_info
-    })
+    if request.method == "POST":
+        username = request.user.username
+        user_info = UserUpdateForm(request.POST, instance=request.user)
+        profile_info = ProfileUpdateForm(request.POST, instance=request.user.profile)
+        if user_info.is_valid() and profile_info.is_valid():
+            user_info.save()
+            profile_info.save()
+            messages.success(request, f'Your Profile has been Updated!')
+            return redirect('profile')
+        else:
+            temp = User.objects.filter(username=request.POST["username"]).first()
+            if temp != None and temp.username != username:
+                messages.error(request, f'The username " {request.POST["username"]} " you provided for the update already exists!')
+            else:
+                messages.error(request, f'The email " {request.POST["email"]} " you provided for the update is invalid')
+            return redirect('profile')
+    else:
+        print(request.user.username)
+        user_info = UserUpdateForm(instance=request.user)
+        profile_info = ProfileUpdateForm(instance=request.user.profile)
+        return render(request, "meet/profile.html", {
+        "user_info": user_info, "profile_info": profile_info
+        })

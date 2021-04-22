@@ -8,4 +8,4 @@ class Profile(models.Model):
     description = models.TextField(default='Say Something about yourself!')
 
     def __str__(self):
-        return f"{self.user.username} Profile"
+        return f"{self.user.username}'s Profile"
