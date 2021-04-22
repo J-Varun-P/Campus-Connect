@@ -24,8 +24,8 @@
   color: #563d76;
 }
 
-.form_update input, .form_update textarea{
-  opacity: 0.8;
+.form_update input:focus, .form_update textarea:focus{
+  color: orange;
 }
 
 .form_update button{
