@@ -1,0 +1,42 @@
+.fc{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.fc_c{
+  flex-direction: column;
+  text-align: center;
+}
+
+.fc_c h2{
+  color: #0dcaf0;
+}
+
+.form_register{
+  width: 75%;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+fieldset div, fieldset input, form > *{
+  margin: 10px 0px;
+}
+
+
+button[type="submit"]:hover{
+  color: #fff;
+}
+
+form{
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.center{
+  text-align: center;
+}

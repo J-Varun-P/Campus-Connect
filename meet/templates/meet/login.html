@@ -1,0 +1,26 @@
+{% extends "meet/layout.html" %}
+{% block body %}
+<div class="fc">
+  {% if messages %}
+        {% for message in messages %}
+          <div class="alert {{ message.tags }} form_register center">
+            {{ message }}
+          </div>
+        {% endfor %}
+  {% endif %}
+    <div class="form-group form_register">
+      <form action="{% url 'login' %}" method="post">
+        <fieldset class="form-group">
+          <legend>Log In</legend>
+          {% csrf_token %}
+          <input autofocus class="form-control" type="text" name="username" placeholder="Username">
+          <input class="form-control" type="password" name="password" placeholder="Password">
+          <input class="btn btn-outline-info" type="submit" value="Login">
+        </fieldset>
+        <small class="text-muted">
+            Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
+        </small>
+      </form>
+    </div>
+</div>
+{% endblock %}
