@@ -10,10 +10,34 @@
   flex-direction: column;
 }
 
-.form_register{
+.form_register, .form_update{
   width: 75%;
   min-width: 300px;
   max-width: 600px;
+}
+
+.form_update *{
+  color: orange;
+}
+
+.form_update input, .form_update textarea{
+  opacity: 0.8;
+}
+
+.form_update button{
+  background: #563d76;
+  border-color: #563d76;
+  color: orange;
+}
+
+.form_update button[type="submit"]:hover{
+  color: #563d76;
+  background: orange;
+  border-color: orange;
+}
+
+.form_update legend, .form_update label{
+  color: #563d76;
 }
 
 fieldset div, form > *{
@@ -60,6 +84,10 @@ form{
   color: inherit;
   padding: 12px 24px;
   font-size: 18px;
+}
+
+.navigation a:hover{
+  color: #fff;
 }
 
 .linktotheright{

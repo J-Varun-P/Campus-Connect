@@ -1,0 +1,21 @@
+{% extends "meet/layout.html" %}
+{% load crispy_forms_tags %}
+{% block body %}
+  <div class="fc">
+    <div class="form_update">
+      <p>{{ user.username }}</p>
+      <p>{{ user.email }}</p>
+    </div>
+    <form method="POST" class="form_update">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend>Profile Info</legend>
+            {{ user_info|crispy }}
+            {{ profile_info|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Update</button>
+        </div>
+    </form>
+  </div>
+{% endblock %}

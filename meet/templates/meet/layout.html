@@ -11,7 +11,7 @@
     {% if user.is_authenticated %}
     <div class="navigation">
       <a href="{% url 'index' %}">Home</a>
-      <a href="#" class="linktotheright">Profile</a>
+      <a href="{% url 'profile' %}" class="linktotheright">Profile</a>
       <a href="{% url 'logout' %}">Logout</a>
     </div>
     {% endif %}

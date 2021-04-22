@@ -7,7 +7,28 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from .models import Profile
 
+class UserRegisterForm(UserCreationForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
+
+
+
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email']
+
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['description']
 
 def login_view(request):
     if request.method == "POST":
@@ -25,16 +46,9 @@ def login_view(request):
             messages.error(request, 'Invalid username and/or password.')
             return HttpResponseRedirect(reverse("login"))
     else:
+        if request.user.is_authenticated:
+            return redirect("index")
         return render(request, "meet/login.html")
-
-
-
-class UserRegisterForm(UserCreationForm):
-    email = forms.EmailField()
-
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password1', 'password2']
 
 
 
@@ -47,6 +61,8 @@ def register(request):
             messages.success(request, f'Account created for {username}, You can now Log In!')
             return redirect('login')
     else:
+        if request.user.is_authenticated:
+            return redirect("index")
         form = UserRegisterForm()
     return render(request, "meet/register.html", {"form": form})
 
@@ -57,6 +73,18 @@ def logout_view(request):
     messages.success(request, 'You have been logged out!')
     return HttpResponseRedirect(reverse("login"))
 
+
+
 @login_required(login_url='/')
 def index(request):
     return render(request, "meet/index.html")
+
+
+
+@login_required(login_url='/')
+def profile(request):
+    user_info = UserUpdateForm()
+    profile_info = ProfileUpdateForm()
+    return render(request, "meet/profile.html", {
+    "user_info": user_info, "profile_info": profile_info
+    })
