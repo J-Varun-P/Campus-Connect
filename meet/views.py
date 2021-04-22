@@ -83,7 +83,7 @@ def index(request):
 
 @login_required(login_url='/')
 def profile(request):
-    user_info = UserUpdateForm()
+    user_info = UserUpdateForm(instance=request.user)
     profile_info = ProfileUpdateForm()
     return render(request, "meet/profile.html", {
     "user_info": user_info, "profile_info": profile_info
