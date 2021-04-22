@@ -1,3 +1,7 @@
+*{
+  font-family: Arial, sans-serif;
+}
+
 .fc{
   display: flex;
   align-items: center;
@@ -37,4 +41,27 @@ form{
 
 .center{
   text-align: center;
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 25px;
+  margin-bottom: 4px;
+  background: #563d76;
+  color: #cbbde2;
+  letter-spacing: 0.1em;
+  position: sticky;
+  top: 0px;
+}
+
+.navigation a{
+  text-decoration: none;
+  color: inherit;
+  padding: 12px 24px;
+  font-size: 18px;
+}
+
+.linktotheright{
+  margin-left: auto;
 }

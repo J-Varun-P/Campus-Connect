@@ -48,7 +48,7 @@ def register(request):
             return redirect('login')
     else:
         form = UserRegisterForm()
-    return render(request, 'meet/register.html', {'form': form})
+    return render(request, "meet/register.html", {"form": form})
 
 
 
@@ -59,4 +59,4 @@ def logout_view(request):
 
 
 def index(request):
-    return HttpResponse(f"TODO")
+    return render(request, "meet/index.html")
