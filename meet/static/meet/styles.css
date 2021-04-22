@@ -6,27 +6,25 @@
   flex-direction: column;
 }
 
-.fc_c{
-  flex-direction: column;
-  text-align: center;
-}
-
-.fc_c h2{
-  color: #0dcaf0;
-}
-
 .form_register{
   width: 75%;
   min-width: 300px;
   max-width: 600px;
 }
 
-fieldset div, fieldset input, form > *{
+fieldset div, form > *{
   margin: 10px 0px;
 }
 
+fieldset input, legend{
+  margin-bottom: 15px;
+}
 
-button[type="submit"]:hover{
+fieldset input[type="submit"]{
+  margin-bottom: 5px;
+}
+
+button[type="submit"]:hover, input[type="submit"]:hover{
   color: #fff;
 }
 

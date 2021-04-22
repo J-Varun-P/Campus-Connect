@@ -54,8 +54,9 @@ def register(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("index"))
+    messages.success(request, 'You have been logged out!')
+    return HttpResponseRedirect(reverse("login"))
 
 
 def index(request):
-    return HttpResponseRedirect(f"TODO")
+    return HttpResponse(f"TODO")
