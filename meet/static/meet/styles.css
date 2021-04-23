@@ -34,7 +34,7 @@
   color: orange;
 }
 
-.form_update button{
+.form_update button, .password_reset_complete a{
   color: orange;
   border-color: #563d76;
   background: #563d76;
@@ -44,7 +44,7 @@
   background: orange;
 }
 
-.form_update button[type="submit"]:hover, .form_update button[type="button"]:hover{
+.form_update button[type="submit"]:hover, .form_update button[type="button"]:hover, .password_reset_complete a:hover{
   color: #563d76;
   border-color: orange;
   background: orange;
@@ -52,6 +52,12 @@
   color: orange;
   border-color: #563d76;
   background: #563d76;
+}
+
+.password_reset_complete a{
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 6px;
 }
 
 .form_update legend, .form_update label{
@@ -162,4 +168,13 @@ form{
 .register_nav{
   position: relative;
   margin-bottom: 15px;
+}
+
+.margin_auto{
+  display: inline-block;
+  text-align: center;
+}
+
+.password_reset_complete > *{
+  margin: 10px;
 }
