@@ -7,16 +7,16 @@
 {% block body %}
   <div class="fc fc_profile">
     <div class="form_update" id="profile_info">
+      {% if messages %}
+            {% for message in messages %}
+              <div class="alert {{ message.tags }} form_update center">
+                {{ message }}
+              </div>
+            {% endfor %}
+      {% endif %}
       <h4>{{ user.username }}</h4>
       <p>{{ user.profile.description }}</p>
     </div>
-    {% if messages %}
-          {% for message in messages %}
-            <div class="alert {{ message.tags }} form_update center">
-              {{ message }}
-            </div>
-          {% endfor %}
-    {% endif %}
     <div class="form_update">
         <button type="button" class="btn btn-outline-info" id="updatebutton">Update Profile</button>
     </div>
