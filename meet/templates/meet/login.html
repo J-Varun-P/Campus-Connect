@@ -17,6 +17,9 @@
           <input class="form-control" type="password" name="password" placeholder="Password">
           <input class="btn btn-outline-info" type="submit" value="Login">
         </fieldset>
+        <small class="text-muted forgot_password">
+          <a href="{% url 'password_reset' %}">Forgotten Password?</a>
+        </small>
         <small class="text-muted">
             Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
         </small>

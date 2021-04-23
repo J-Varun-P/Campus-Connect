@@ -16,7 +16,7 @@
   min-height: min-content;
 }
 
-.form_register, .form_update{
+.form_register, .form_update, .password_forms{
   width: 75%;
   min-width: 300px;
   max-width: 600px;
@@ -85,6 +85,15 @@ form{
   text-align: center;
 }
 
+.forgot_password{
+  display: block;
+}
+
+.forgot_password a{
+  text-decoration: none;
+}
+
+
 .navigation {
   display: flex;
   flex-wrap: wrap;
@@ -120,7 +129,7 @@ form{
 
 #closeform{
   position: absolute;
-  padding: 6px 8px;
+  padding: 4px 8px;
   right: 18px;
   top: 24px;
 }
