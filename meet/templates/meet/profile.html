@@ -1,7 +1,11 @@
 {% extends "meet/layout.html" %}
+{% load static %}
 {% load crispy_forms_tags %}
+{% block links %}
+  <script type="text/javascript" src="{% static 'meet/script.js' %}"></script>
+{% endblock %}
 {% block body %}
-  <div class="fc">
+  <div class="fc fc_profile">
     <div class="form_update" id="profile_info">
       <h4>{{ user.username }}</h4>
       <p>{{ user.profile.description }}</p>
@@ -13,7 +17,14 @@
             </div>
           {% endfor %}
     {% endif %}
+    <div class="form_update">
+        <button type="button" class="btn btn-outline-info" id="updatebutton">Update Profile</button>
+    </div>
     <form method="POST" class="form_update" id="profile_form">
+        <div id="closeform">
+          <div class="line line1"></div>
+          <div class="line line2"></div>
+        </div>
         {% csrf_token %}
         <fieldset class="form-group">
             <legend>Profile Info</legend>

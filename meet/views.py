@@ -98,10 +98,8 @@ def profile(request):
         else:
             temp = User.objects.filter(username=request.POST["username"]).first()
             if temp != None and temp.username != username:
-                messages.error(request, f"Can't update the profile")
                 messages.error(request, f'The username " {request.POST["username"]} " you provided for the update already exists!')
             else:
-                messages.error(request, f"Can't update the profile")
                 messages.error(request, f'The email " {request.POST["email"]} " you provided for the update is invalid')
             return redirect('profile')
     else:

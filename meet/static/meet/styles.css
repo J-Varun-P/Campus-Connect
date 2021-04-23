@@ -10,6 +10,12 @@
   flex-direction: column;
 }
 
+.fc_profile{
+  margin-top: 10px;
+  justify-content: flex-start;
+  min-height: min-content;
+}
+
 .form_register, .form_update{
   width: 75%;
   min-width: 300px;
@@ -38,7 +44,7 @@
   background: orange;
 }
 
-.form_update button[type="submit"]:hover{
+.form_update button[type="submit"]:hover, .form_update button[type="button"]:hover{
   color: #563d76;
   border-color: orange;
   background: orange;
@@ -105,4 +111,30 @@ form{
 
 .linktotheright{
   margin-left: auto;
+}
+
+#profile_form{
+  margin-top: 15px;
+  position: relative;
+}
+
+#closeform{
+  position: absolute;
+  right: 18px;
+  top: 29px;
+}
+
+.line{
+  width: 4px;
+  height: 16px;
+  background: #ccc;
+}
+
+.line1{
+  position: absolute;
+  transform: rotate(45deg);
+}
+
+.line2{
+  transform: rotate(-45deg);
 }
