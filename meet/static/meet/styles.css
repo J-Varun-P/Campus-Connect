@@ -120,8 +120,13 @@ form{
 
 #closeform{
   position: absolute;
+  padding: 6px 8px;
   right: 18px;
-  top: 29px;
+  top: 24px;
+}
+
+#closeform:hover{
+  cursor: pointer;
 }
 
 .line{
