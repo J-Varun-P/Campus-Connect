@@ -152,3 +152,14 @@ form{
 .line2{
   transform: rotate(-45deg);
 }
+
+.absolute_nav{
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.register_nav{
+  position: relative;
+  margin-bottom: 15px;
+}

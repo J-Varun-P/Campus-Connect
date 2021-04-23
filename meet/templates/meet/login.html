@@ -1,5 +1,8 @@
 {% extends "meet/layout.html" %}
 {% block body %}
+<div class="navigation absolute_nav">
+  <a href="{% url 'register' %}" class="linktotheright">Sign Up</a>
+</div>
 <div class="fc">
   {% if messages %}
         {% for message in messages %}

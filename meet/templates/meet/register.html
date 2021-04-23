@@ -1,6 +1,9 @@
 {% extends "meet/layout.html" %}
 {% load crispy_forms_tags %}
 {% block body %}
+<div class="navigation register_nav">
+  <a href="{% url 'login' %}" class="linktotheright">Log In</a>
+</div>
 <div class="fc">
     <div class="form-group form_register">
         <form method="POST">
