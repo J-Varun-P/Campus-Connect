@@ -30,6 +30,8 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ['description']
 
+
+
 def login_view(request):
     if request.method == "POST":
 
