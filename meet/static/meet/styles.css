@@ -22,11 +22,11 @@
   max-width: 600px;
 }
 
-.form_update *{
+.form_update *, .password_change_form input{
   color: orange;
 }
 
-#profile_info > *{
+#profile_info > *, .password_change_form *{
   color: #563d76;
 }
 
@@ -179,7 +179,14 @@ form{
   margin: 10px;
 }
 
-.password_change{
-  width: 75%;
-  margin: auto;
+#password_change{
+  color: #563d76;
+  background: orange;
+  border-color: orange;
+}
+
+#password_change:hover{
+  color: orange;
+  background: #563d76;
+  border-color: #563d76;
 }
