@@ -1,7 +1,14 @@
 {% extends "meet/layout.html" %}
 {% block body %}
-<div class="container">
-  <p>{{ user.username }}</p>
-  <p>{{ user.email }}</p>
-</div>
+  {% if messages %}
+        {% for message in messages %}
+          <div class="alert {{ message.tags }} password_change center">
+            {{ message }}
+          </div>
+        {% endfor %}
+  {% endif %}
+  <div class="container">
+    <p>{{ user.username }}</p>
+    <p>{{ user.email }}</p>
+  </div>
 {% endblock %}

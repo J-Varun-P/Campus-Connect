@@ -178,3 +178,8 @@ form{
 .password_reset_complete > *{
   margin: 10px;
 }
+
+.password_change{
+  width: 75%;
+  margin: auto;
+}

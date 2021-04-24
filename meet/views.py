@@ -111,3 +111,10 @@ def profile(request):
         return render(request, "meet/profile.html", {
         "user_info": user_info, "profile_info": profile_info
         })
+
+
+
+@login_required(login_url='/')
+def PasswordChangeDone(request):
+    messages.success(request, f'Your Password has been changed successfully!')
+    return redirect('index')
