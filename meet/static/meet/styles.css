@@ -133,6 +133,19 @@ form{
   position: relative;
 }
 
+#profile_info{
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  word-spacing: 0.15em;
+  line-height: 2;
+}
+
+#profile_info h4{
+  line-height: 2;
+  margin-top: 10px;
+  border-bottom: 2px solid orange;
+}
+
 #closeform{
   position: absolute;
   padding: 4px 8px;

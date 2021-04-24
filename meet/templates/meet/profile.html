@@ -14,8 +14,10 @@
               </div>
             {% endfor %}
       {% endif %}
-      <h4>{{ user.username }}</h4>
-      <p>{{ user.profile.description }}</p>
+      <h4>Username: {{ user.username }}</h4>
+      {% for line in lines %}
+        <p>{{ line }}</p>
+      {% endfor %}
     </div>
     <div class="form_update">
         <button type="button" class="btn btn-outline-info" id="updatebutton">Update Profile</button>

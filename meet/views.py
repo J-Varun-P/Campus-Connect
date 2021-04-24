@@ -98,6 +98,9 @@ def profile(request):
             messages.success(request, f'Your Profile has been Updated!')
             return redirect('profile')
         else:
+            lines = request.user.profile.description.splitlines()
+            print("In profile")
+            print(lines)
             temp = User.objects.filter(username=request.POST["username"]).first()
             if temp != None and temp.username != username:
                 messages.error(request, f'The username " {request.POST["username"]} " you provided for the update already exists!')
@@ -106,10 +109,13 @@ def profile(request):
             return redirect('profile')
     else:
         print(request.user.username)
+        lines = request.user.profile.description.splitlines()
+        print("In profile")
+        print(lines)
         user_info = UserUpdateForm(instance=request.user)
         profile_info = ProfileUpdateForm(instance=request.user.profile)
         return render(request, "meet/profile.html", {
-        "user_info": user_info, "profile_info": profile_info
+        "user_info": user_info, "profile_info": profile_info, "lines": lines
         })
 
 
