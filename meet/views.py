@@ -8,6 +8,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
+from django.utils import timezone
+import datetime
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -82,6 +84,8 @@ def logout_view(request):
 
 @login_required(login_url='/')
 def index(request):
+    print(timezone.now())
+    print(datetime.datetime.now())
     return render(request, "meet/index.html")
 
 
@@ -108,10 +112,7 @@ def profile(request):
                 messages.error(request, f'The email " {request.POST["email"]} " you provided for the update is invalid')
             return redirect('profile')
     else:
-        print(request.user.username)
         lines = request.user.profile.description.splitlines()
-        print("In profile")
-        print(lines)
         user_info = UserUpdateForm(instance=request.user)
         profile_info = ProfileUpdateForm(instance=request.user.profile)
         return render(request, "meet/profile.html", {
