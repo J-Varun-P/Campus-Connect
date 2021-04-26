@@ -1,0 +1,16 @@
+{% extends "meet/layout.html" %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="fc">
+    <form method="POST" class="form-group activity_form">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Add Activity</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit" id="activity_form">Add Activity</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

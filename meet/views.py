@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile
+from .models import Profile, Activity
 from django.utils import timezone
 import datetime
 
@@ -32,6 +32,10 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ['description']
 
+
+class activity(forms.Form):
+    title = forms.CharField(label="Title", max_length=128)
+    description = forms.CharField(label="Description", widget=forms.Textarea)
 
 
 def login_view(request):
@@ -84,9 +88,10 @@ def logout_view(request):
 
 @login_required(login_url='/')
 def index(request):
-    print(timezone.now())
-    print(datetime.datetime.now())
-    return render(request, "meet/index.html")
+    activities = Activity.objects.all()
+    return render(request, "meet/index.html", {
+    "activities": activities
+    })
 
 
 
@@ -125,3 +130,26 @@ def profile(request):
 def PasswordChangeDone(request):
     messages.success(request, f'Your Password has been changed successfully!')
     return redirect('index')
+
+
+@login_required(login_url='/')
+def addactivity(request):
+    if request.method == "POST":
+        user_activity = activity(request.POST)
+        if user_activity.is_valid():
+            user_title = user_activity.cleaned_data["title"]
+            user_description = user_activity.cleaned_data["description"]
+            user_activity_create = Activity(user=request.user, title=user_title, description=user_description)
+            print(user_activity_create)
+            user_activity_create.save()
+            messages.success(request, f'Your activity has been added successfully!')
+            return redirect("index")
+        else:
+            return render(request, "meet/index.html", {
+            "form": user_activity
+            })
+    else:
+        user_activity = activity()
+        return render(request, "meet/addactivity.html", {
+        "form": user_activity
+        })

@@ -16,17 +16,43 @@
   min-height: min-content;
 }
 
-.form_register, .form_update, .password_forms{
+.form_register, .form_update, .password_forms, .activity_form, .index_page{
   width: 75%;
   min-width: 300px;
   max-width: 600px;
 }
 
-.form_update *, .password_change_form input{
+.index_page{
+  margin: auto;
+}
+
+.index_page > *{
+  margin: 10px;
+}
+
+.indexpage_activity > *{
+  margin: 2px;
+}
+
+.indexpage_activity{
+  border: 2px solid #563d76;
+  color: orange;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.indexpage_activity .indexpage_posted_on{
+  align-self: flex-end;
+}
+
+.form_update *, .password_change_form input, .activity_form input, .activity_form textarea{
   color: orange;
 }
 
-#profile_info > *, .password_change_form *{
+#profile_info > *, .password_change_form *, .activity_form{
   color: #563d76;
 }
 
@@ -192,13 +218,13 @@ form{
   margin: 10px;
 }
 
-#password_change{
+#password_change, #activity_form{
   color: #563d76;
   background: orange;
   border-color: orange;
 }
 
-#password_change:hover{
+#password_change:hover, #activity_form:hover{
   color: orange;
   background: #563d76;
   border-color: #563d76;

@@ -1,14 +1,25 @@
 {% extends "meet/layout.html" %}
 {% block body %}
-  {% if messages %}
-        {% for message in messages %}
-          <div class="alert {{ message.tags }} password_change center">
-            {{ message }}
-          </div>
-        {% endfor %}
-  {% endif %}
-  <div class="container">
-    <p>{{ user.username }}</p>
-    <p>{{ user.email }}</p>
+  <div class="index_page">
+    {% if messages %}
+          {% for message in messages %}
+            <div class="alert {{ message.tags }} password_change center">
+              {{ message }}
+            </div>
+          {% endfor %}
+    {% endif %}
+    {% for activity in activities %}
+      <div class="indexpage_activity">
+        <div>
+          {{ activity.user.username }}
+        </div>
+        <div>
+          {{ activity.title }}
+        </div>
+        <div class="indexpage_posted_on">
+          {{ activity.time|date:"F d, Y" }}
+        </div>
+      </div>
+    {% endfor %}
   </div>
 {% endblock %}
