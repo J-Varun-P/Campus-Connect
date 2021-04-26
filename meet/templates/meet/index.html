@@ -14,7 +14,10 @@
     {% endif %}
     {% for activity in activities %}
       <div class="indexpage_activity">
-        <i class="far fa-trash-alt fontawesome_delete"></i>
+        <div class="fontawesome_icons">
+          <i class="far fa-edit fontawesome_edit fontawesome_common"></i>
+          <i class="far fa-trash-alt fontawesome_delete fontawesome_common"></i>
+        </div>
         <div>
           {{ activity.user.username }}
         </div>

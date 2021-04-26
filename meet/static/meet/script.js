@@ -13,14 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 }
 
-if(document.querySelector('.fontawesome_delete')){
-  document.querySelectorAll('.fontawesome_delete').forEach(item => {
+if(document.querySelector('.fontawesome_common')){
+  document.querySelectorAll('.fontawesome_common').forEach(item => {
     item.onmouseover = () =>{
       item.classList.remove('far');
       item.classList.add('fas');
     }
   });
-  document.querySelectorAll('.fontawesome_delete').forEach(item => {
+  document.querySelectorAll('.fontawesome_common').forEach(item => {
     item.onmouseout = () =>{
       item.classList.remove('fas');
       item.classList.add('far');
