@@ -42,6 +42,7 @@
   padding: 10px;
   border-radius: 10px;
   font-size: 18px;
+  position: relative;
 }
 
 .indexpage_activity .indexpage_posted_on{
@@ -235,4 +236,11 @@ form{
 
 .pagination_links{
   text-align: center;
+}
+
+.fontawesome_delete{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px;
 }
