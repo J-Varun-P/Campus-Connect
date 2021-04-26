@@ -1,0 +1,18 @@
+{% extends "meet/layout.html" %}
+{% block body %}
+  <div class="index_page">
+    {% for activity in activities %}
+      <div class="indexpage_activity">
+        <div>
+          {{ activity.user.username }}
+        </div>
+        <div>
+          {{ activity.title }}
+        </div>
+        <div class="indexpage_posted_on">
+          {{ activity.time|date:"F d, Y" }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

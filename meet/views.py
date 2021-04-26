@@ -1,15 +1,16 @@
+import datetime
 from django import forms
 from django.urls import reverse
-from django.contrib import messages
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
+from django.utils import timezone
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
 from .models import Profile, Activity
-from django.utils import timezone
-import datetime
+from django.core.paginator import Paginator
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -89,8 +90,11 @@ def logout_view(request):
 @login_required(login_url='/')
 def index(request):
     activities = Activity.objects.all()
+    paginator = Paginator(activities, 2)
+    page_num = request.GET.get('page')
+    page_obj = paginator.get_page(page_num)
     return render(request, "meet/index.html", {
-    "activities": activities
+    "activities": page_obj
     })
 
 
@@ -153,3 +157,11 @@ def addactivity(request):
         return render(request, "meet/addactivity.html", {
         "form": user_activity
         })
+
+
+@login_required(login_url='/')
+def myactivities(request):
+    activities = Activity.objects.filter(user=request.user)
+    return render(request, "meet/myactivities.html", {
+    "activities": activities
+    })
