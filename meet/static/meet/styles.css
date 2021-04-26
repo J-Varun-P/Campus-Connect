@@ -60,7 +60,7 @@
   color: orange;
 }
 
-.form_update button, .password_reset_complete a{
+.form_update button, .password_reset_complete a, .pagination_links a{
   color: orange;
   border-color: #563d76;
   background: #563d76;
@@ -70,7 +70,7 @@
   background: orange;
 }
 
-.form_update button[type="submit"]:hover, .form_update button[type="button"]:hover, .password_reset_complete a:hover{
+.form_update button[type="submit"]:hover, .form_update button[type="button"]:hover, .password_reset_complete a:hover, .pagination_links a:hover, #current_pagination_link{
   color: #563d76;
   border-color: orange;
   background: orange;
@@ -125,6 +125,9 @@ form{
   text-decoration: none;
 }
 
+.forgot_password a:hover{
+  text-decoration: underline;
+}
 
 .navigation {
   display: flex;
@@ -228,4 +231,8 @@ form{
   color: orange;
   background: #563d76;
   border-color: #563d76;
+}
+
+.pagination_links{
+  text-align: center;
 }

@@ -89,7 +89,7 @@ def logout_view(request):
 
 @login_required(login_url='/')
 def index(request):
-    activities = Activity.objects.all()
+    activities = Activity.objects.all().order_by('-time')
     paginator = Paginator(activities, 2)
     page_num = request.GET.get('page')
     page_obj = paginator.get_page(page_num)
