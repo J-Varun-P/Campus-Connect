@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 }
 
+if(document.querySelector('#delete_activity_page')){
+  document.querySelector('#delete_activity_page').style.display = 'none';
+}
 if(document.querySelector('.fontawesome_common')){
   document.querySelectorAll('.fontawesome_common').forEach(item => {
     item.onmouseover = () =>{
@@ -26,11 +29,13 @@ if(document.querySelector('.fontawesome_common')){
       item.classList.add('far');
     }
   });
+  console.log("setting display to none");
   document.querySelector('#delete_activity_page').style.display = 'none';
-  document.querySelectorAll('.fontawesome_common').forEach(item => {
+  document.querySelectorAll('.fontawesome_delete').forEach(item => {
     item.onclick = () => {
+      const element = item.parentElement.parentElement.children[2];
       console.log(`The id is ${item.dataset.id}`);
-      console.log(`The title is ${item.dataset.title}`);
+      console.log(element.innerHTML);
       document.querySelector('#delete_activity_page').style.display = 'block';
       const q = document.querySelector('#delete_activity_page_content_js');
       const p = document.createElement('div');
@@ -38,7 +43,7 @@ if(document.querySelector('.fontawesome_common')){
       p.innerHTML = `
 
       <p>Are you sure you want to delete your Activity?</p>
-
+      <p>${element.innerHTML}</p>
       `;
       q.appendChild(p);
     }
@@ -47,13 +52,13 @@ if(document.querySelector('.fontawesome_common')){
   document.querySelector('#closeform').onclick = () => {
     document.querySelector('.delete_activity_page_content_js1').remove();
     document.querySelector('#delete_activity_page').style.display = 'none';
-  };
+  }
 
   document.querySelector('.cancel_delete').onclick = () => {
     document.querySelector('.delete_activity_page_content_js1').remove();
     document.querySelector('#delete_activity_page').style.display = 'none';
-  };
+  }
 
 }
 
-})
+});
