@@ -20,14 +20,56 @@ html, body{
   display: flex;
   padding: 15px;
   box-sizing: border-box;
+  color: #563d76;
+  letter-spacing: 0.1em;
+  word-spacing: 0.15em;
 }
 
-.left_half{
+.fc_display > *{
+  margin-right: 5px;
+}
+
+.left_half, .right_half{
   flex-basis: 40%;
   box-sizing: border-box;
   padding: 15px;
-  border: 2px solid #563d76;
+  border: 1px solid #563d76;
+  border: 1px solid orange;
   border-radius: 10px;
+}
+
+.right_half{
+  flex-basis: 60%;
+}
+
+.left_half{
+  border: none;
+  font-size: 18px;
+}
+
+.left_half h4, .left_half > p{
+  padding-left: 10px;
+  border-left: 4px solid orange;
+  border-top: 4px solid orange;
+  line-height: 2;
+  border-radius: 10px;
+}
+
+.left_half > p{
+  border: none;
+  border-right: 4px solid orange;
+  border-bottom: 4px solid orange;
+}
+
+.left_half_members{
+  padding: 10px;
+  line-height: 3;
+}
+
+.left_half_members h5{
+  display: inline-block;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #563d76;
 }
 
 .fc_profile{
@@ -176,6 +218,15 @@ form{
 
 .linktotheright{
   margin-left: auto;
+}
+
+@media screen and (max-width:1000px){
+  .linktotheright{
+    margin-left: 0;
+  }
+  .navigation > *{
+    flex-basis: 25ch;
+  }
 }
 
 #profile_form{

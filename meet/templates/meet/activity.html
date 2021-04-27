@@ -2,9 +2,15 @@
 {% block body %}
 <div class="fc_display">
   <div class="left_half">
-    <h2>{{ activity.user.username }}</h2>
-    <p>{{ activity.title }}</p>
+    <h4>{{ activity.title }}</h4>
     <p>{{ activity.description }}</p>
+    <div class="left_half_members">
+      <h5>Members in this activity</h5>
+      <p>{{ activity.user.username }}</p>
+    </div>
+  </div>
+  <div class="right_half">
+
   </div>
 </div>
 {% endblock %}

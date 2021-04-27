@@ -1,8 +1,16 @@
 {% extends "meet/layout.html" %}
+{% load static %}
+{% block links %}
+  <script type="text/javascript" src="{% static 'meet/script.js' %}"></script>
+{% endblock %}
 {% block body %}
   <div class="index_page">
     {% for activity in activities %}
       <div class="indexpage_activity">
+        <div class="fontawesome_icons">
+          <i class="far fa-edit fontawesome_edit fontawesome_common"></i>
+          <i class="far fa-trash-alt fontawesome_delete fontawesome_common"></i>
+        </div>
         <div>
           {{ activity.user.username }}
         </div>
