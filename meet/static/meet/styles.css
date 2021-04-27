@@ -306,3 +306,7 @@ form{
   line-height: 2;
   margin: 10px 0px;
 }
+
+#delete_activity_page_content_js{
+  display: inline-block; 
+}

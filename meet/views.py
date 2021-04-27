@@ -165,3 +165,11 @@ def myactivities(request):
     return render(request, "meet/myactivities.html", {
     "activities": activities
     })
+
+
+@login_required(login_url='/')
+def deleteactivity(request, id):
+    activity = Activity.objects.get(pk=id)
+    activity.delete()
+    messages.success(request, f'Your activity has been deleted successfully!')
+    return redirect("index")
