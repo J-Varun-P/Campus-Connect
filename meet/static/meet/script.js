@@ -31,15 +31,13 @@ if(document.querySelector('.fontawesome_common')){
     item.onclick = () => {
       console.log(`The id is ${item.dataset.id}`);
       document.querySelector('#delete_activity_page').style.display = 'block';
-      const q = document.querySelector('#delete_activity_page_content');
+      const q = document.querySelector('#delete_activity_page_content_js');
       const p = document.createElement('div');
-      p.classList.add('delete_activity_page_content_js')
+      p.classList.add('delete_activity_page_content_js1')
       p.innerHTML = `
 
       <p>Are you sure you want to delete your Activity?</p>
       <p>${item.dataset.title}</p>
-      <a href="#" class="btn btn-outline-primary common_button">Confirm</a>
-      <a href="#" class="btn btn-outline common_button">Take Me Away</a>
 
       `;
       q.appendChild(p);
@@ -47,7 +45,12 @@ if(document.querySelector('.fontawesome_common')){
   });
 
   document.querySelector('#closeform').onclick = () => {
-    document.querySelector('.delete_activity_page_content_js').remove();
+    document.querySelector('.delete_activity_page_content_js1').remove();
+    document.querySelector('#delete_activity_page').style.display = 'none';
+  };
+
+  document.querySelector('.cancel_delete').onclick = () => {
+    document.querySelector('.delete_activity_page_content_js1').remove();
     document.querySelector('#delete_activity_page').style.display = 'none';
   };
 
