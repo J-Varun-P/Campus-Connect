@@ -30,6 +30,7 @@ if(document.querySelector('.fontawesome_common')){
   document.querySelectorAll('.fontawesome_common').forEach(item => {
     item.onclick = () => {
       console.log(`The id is ${item.dataset.id}`);
+      console.log(`The title is ${item.dataset.title}`);
       document.querySelector('#delete_activity_page').style.display = 'block';
       const q = document.querySelector('#delete_activity_page_content_js');
       const p = document.createElement('div');
@@ -37,7 +38,6 @@ if(document.querySelector('.fontawesome_common')){
       p.innerHTML = `
 
       <p>Are you sure you want to delete your Activity?</p>
-      <p>${item.dataset.title}</p>
 
       `;
       q.appendChild(p);
