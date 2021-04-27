@@ -308,5 +308,9 @@ form{
 }
 
 #delete_activity_page_content_js{
-  display: inline-block; 
+  display: inline-block;
+}
+
+.text_decoration_none{
+  text-decoration: none;
 }

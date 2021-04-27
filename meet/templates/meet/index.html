@@ -13,6 +13,7 @@
           {% endfor %}
     {% endif %}
     {% for activity in activities %}
+    <a href="#" class="text_decoration_none">
       <div class="indexpage_activity">
         {% if request.user == activity.user %}
           <div class="fontawesome_icons">
@@ -30,6 +31,7 @@
           {{ activity.time|date:"F d, Y" }}
         </div>
       </div>
+    </a>
     {% endfor %}
     <div class="pagination_links">
 
