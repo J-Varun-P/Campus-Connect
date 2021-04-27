@@ -2,6 +2,11 @@
   font-family: Arial, sans-serif;
 }
 
+html, body{
+  padding: 0;
+  margin: 0;
+}
+
 .fc{
   display: flex;
   align-items: center;
@@ -252,4 +257,52 @@ form{
 
 .fontawesome_common:hover{
   cursor: pointer;
+}
+
+#delete_activity_page{
+  background: #fff;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 10;
+  margin: 0px;
+  opacity: 0.9;
+}
+
+.delete_activity_conform_page{
+  letter-spacing: 0.1em;
+  word-spacing: 0.15em;
+  color: #563d76;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete_activity_page_content{
+  min-width: 300px;
+  max-width: 600px;
+  width: 75%;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  position: relative;
+  padding: 25px;
+  box-shadow: 0 0 10px #ccc;
+  font-size: 18px;
+}
+
+.delete_activity_page_content h4{
+  padding-bottom: 6px;
+  border-bottom: 1px solid #563d76;
+}
+
+.delete_activity_page_content #closeform{
+  top: 27px;
+  right: 26px;
+}
+.delete_activity_page_content p{
+  line-height: 2;
+  margin: 10px 0px;
 }

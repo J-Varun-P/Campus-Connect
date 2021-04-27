@@ -26,6 +26,25 @@ if(document.querySelector('.fontawesome_common')){
       item.classList.add('far');
     }
   });
+  document.querySelector('#delete_activity_page').style.display = 'none';
+  document.querySelectorAll('.fontawesome_common').forEach(item => {
+    item.onclick = () => {
+      console.log(`The id is ${item.dataset.id}`);
+      document.querySelector('#delete_activity_page').style.display = 'block';
+      const q = document.querySelector('#delete_activity_page_content');
+      const p = document.createElement('div');
+      p.innerHTML = `
+
+      <p>Are you sure you want to delete your Activity?</p>
+      <p>${item.dataset.title}</p>
+      <a href="#" class="btn btn-outline-primary">Confirm</a>
+      <a href="#" class="btn btn-outline">Take Me Away</a>
+
+      `;
+      q.appendChild(p);
+    }
+  });
+
 }
 
 })
