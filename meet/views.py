@@ -173,3 +173,10 @@ def deleteactivity(request, id):
     activity.delete()
     messages.success(request, f'Your activity has been deleted successfully!')
     return redirect("index")
+
+@login_required(login_url='/')
+def displayactivity(request, id):
+    activity = Activity.objects.get(pk=id)
+    return render(request, "meet/activity.html", {
+    "activity": activity
+    })

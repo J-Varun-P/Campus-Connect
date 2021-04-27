@@ -13,7 +13,7 @@
           {% endfor %}
     {% endif %}
     {% for activity in activities %}
-    <a href="#" class="text_decoration_none">
+    <a href="{% url 'display_activity' activity.id %}" class="text_decoration_none">
       <div class="indexpage_activity">
         {% if request.user == activity.user %}
           <div class="fontawesome_icons">

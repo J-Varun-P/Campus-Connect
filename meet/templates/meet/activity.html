@@ -1,0 +1,10 @@
+{% extends "meet/layout.html" %}
+{% block body %}
+<div class="fc_display">
+  <div class="left_half">
+    <h2>{{ activity.user.username }}</h2>
+    <p>{{ activity.title }}</p>
+    <p>{{ activity.description }}</p>
+  </div>
+</div>
+{% endblock %}

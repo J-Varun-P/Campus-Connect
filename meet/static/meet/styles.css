@@ -15,6 +15,21 @@ html, body{
   flex-direction: column;
 }
 
+.fc_display{
+  height: calc(100vh - 60px);
+  display: flex;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.left_half{
+  flex-basis: 40%;
+  box-sizing: border-box;
+  padding: 15px;
+  border: 2px solid #563d76;
+  border-radius: 10px;
+}
+
 .fc_profile{
   margin-top: 10px;
   justify-content: flex-start;
