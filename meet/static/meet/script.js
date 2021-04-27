@@ -33,17 +33,23 @@ if(document.querySelector('.fontawesome_common')){
       document.querySelector('#delete_activity_page').style.display = 'block';
       const q = document.querySelector('#delete_activity_page_content');
       const p = document.createElement('div');
+      p.classList.add('delete_activity_page_content_js')
       p.innerHTML = `
 
       <p>Are you sure you want to delete your Activity?</p>
       <p>${item.dataset.title}</p>
-      <a href="#" class="btn btn-outline-primary">Confirm</a>
-      <a href="#" class="btn btn-outline">Take Me Away</a>
+      <a href="#" class="btn btn-outline-primary common_button">Confirm</a>
+      <a href="#" class="btn btn-outline common_button">Take Me Away</a>
 
       `;
       q.appendChild(p);
     }
   });
+
+  document.querySelector('#closeform').onclick = () => {
+    document.querySelector('.delete_activity_page_content_js').remove();
+    document.querySelector('#delete_activity_page').style.display = 'none';
+  };
 
 }
 
