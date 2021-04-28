@@ -5,8 +5,18 @@
     <h4>{{ activity.title }}</h4>
     <p>{{ activity.description }}</p>
     <div class="left_half_members">
-      <h5>Members in this activity</h5>
+      <div class="fc_activity">
+        <h5>Members in this activity</h5>
+        <div class="fc_activity_button">
+          {% if request.user != activity.user %}
+            <a href="{% url 'join_activity' activity.id %}" class="btn btn-outline common_button">Join Activity</a>
+          {% endif %}
+        </div>
+      </div>
       <p>{{ activity.user.username }}</p>
+      {% for user in users %}
+        <p>{{ user.user.username }}</p>
+      {% endfor %}
     </div>
   </div>
   <div class="right_half">

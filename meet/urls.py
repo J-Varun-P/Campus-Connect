@@ -14,6 +14,7 @@ urlpatterns = [
     path("edit-activity/<int:id>", views.editactivity, name="edit_activity"),
     path("index/delete-activity/<int:id>", views.deleteactivity, name="delete_activity"),
     path("my-activities/", views.myactivities, name="my_activities"),
+    path("join-activity/<int:id>", views.joinactivity, name="join_activity"),
     path("activities/<int:id>", views.displayactivity, name="display_activity"),
     path("password_change_done/", views.PasswordChangeDone, name="password_change_done"),
     path('password-change/', auth_views.PasswordChangeView.as_view(template_name="meet/password_change.html"), name="password_change"),

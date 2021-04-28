@@ -19,3 +19,10 @@ class Activity(models.Model):
 
     def __str__(self):
         return f"{self.title} by {self.user.username} at {self.time}"
+
+class Joining(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="joined_activities")
+    activity = models.ForeignKey(Activity, on_delete=models.CASCADE, related_name="user_activities")
+
+    def __str__(self):
+        return f"{self.user.username} joined {self.activity.title}"

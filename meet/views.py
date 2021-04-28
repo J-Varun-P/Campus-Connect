@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from .models import Profile, Activity
+from .models import Profile, Activity, Joining
 from django.core.paginator import Paginator
 
 class UserRegisterForm(UserCreationForm):
@@ -182,8 +182,9 @@ def deleteactivity(request, id):
 @login_required(login_url='/')
 def displayactivity(request, id):
     activity = Activity.objects.get(pk=id)
+    users = Joining.objects.filter(activity=activity).all()
     return render(request, "meet/activity.html", {
-    "activity": activity
+    "activity": activity, "users": users
     })
 
 @login_required(login_url='/')
@@ -202,3 +203,16 @@ def editactivity(request, id):
         })
     else:
         return redirect("index")
+
+
+@login_required(login_url='/')
+def joinactivity(request, id):
+    obj = Activity.objects.get(pk=id)
+    print(obj)
+    activity_join = Joining(user=request.user, activity=obj)
+    print(activity_join)
+    print(activity_join.user)
+    print(activity_join.activity)
+    activity_join.save()
+    #activity_join.save()
+    return redirect("display_activity", id=id)
