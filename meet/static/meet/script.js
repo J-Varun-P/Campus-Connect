@@ -30,6 +30,7 @@ if(document.querySelector('#delete_activity_page')){
   document.querySelector('#delete_activity_page').style.display = 'none';
 }
 if(document.querySelector('.fontawesome_common')){
+  console.log("Font awesome common is here");
   document.querySelectorAll('.fontawesome_common').forEach(item => {
     item.onmouseover = () =>{
       item.classList.remove('far');
