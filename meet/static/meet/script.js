@@ -62,6 +62,12 @@ if(document.querySelector('.fontawesome_common')){
       event.stopPropagation();
     }
   });
+  document.querySelectorAll('.fontawesome_edit').forEach(item => {
+    item.onclick = (event) => {
+      event.stopPropagation();
+    }
+  });
+
 
   document.querySelector('#closeform').onclick = () => {
     document.querySelector('.delete_activity_page_content_js1').remove();
