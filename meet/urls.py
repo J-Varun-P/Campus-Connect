@@ -11,6 +11,7 @@ urlpatterns = [
     path("index/", views.index, name="index"),
     path("profile/", views.profile, name="profile"),
     path("add-activity/", views.addactivity, name="add_activity"),
+    path("edit-activity/<int:id>", views.editactivity, name="edit_activity"),
     path("index/delete-activity/<int:id>", views.deleteactivity, name="delete_activity"),
     path("my-activities/", views.myactivities, name="my_activities"),
     path("activities/<int:id>", views.displayactivity, name="display_activity"),

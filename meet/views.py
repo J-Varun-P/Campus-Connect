@@ -34,6 +34,11 @@ class ProfileUpdateForm(forms.ModelForm):
         fields = ['description']
 
 
+class ActivityUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Activity
+        fields = ['title', 'description']
+
 class activity(forms.Form):
     title = forms.CharField(label="Title", max_length=128)
     description = forms.CharField(label="Description", widget=forms.Textarea)
@@ -179,4 +184,13 @@ def displayactivity(request, id):
     activity = Activity.objects.get(pk=id)
     return render(request, "meet/activity.html", {
     "activity": activity
+    })
+
+@login_required(login_url='/')
+def editactivity(request, id):
+    obj = Activity.objects.get(pk=id)
+    print(obj)
+    form = ActivityUpdateForm(instance=obj)
+    return render(request, "meet/editactivity.html", {
+    "form": form
     })
