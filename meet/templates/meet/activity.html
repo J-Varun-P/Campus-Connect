@@ -6,16 +6,20 @@
     <p>{{ activity.description }}</p>
     <div class="left_half_members">
       <div class="fc_activity">
-        <h5>Members in this activity</h5>
+        <h5>Members in this activity ({{ users_list|length }})</h5>
         <div class="fc_activity_button">
           {% if request.user != activity.user %}
+          {% if request.user.username in users_list %}
+            <a href="{% url 'leave_activity' activity.id %}" class="btn btn-outline common_button">Leave Activity</a>
+          {% else %}
             <a href="{% url 'join_activity' activity.id %}" class="btn btn-outline common_button">Join Activity</a>
+          {% endif %}
           {% endif %}
         </div>
       </div>
-      <p>{{ activity.user.username }}</p>
+      <p class="activity_users">{{ activity.user.username }}</p>
       {% for user in users %}
-        <p>{{ user.user.username }}</p>
+        <p class="activity_users">{{ user.user.username }}</p>
       {% endfor %}
     </div>
   </div>

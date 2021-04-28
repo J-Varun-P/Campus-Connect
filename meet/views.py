@@ -183,8 +183,11 @@ def deleteactivity(request, id):
 def displayactivity(request, id):
     activity = Activity.objects.get(pk=id)
     users = Joining.objects.filter(activity=activity).all()
+    users_list = []
+    for user in users:
+        users_list.append(user.user.username)
     return render(request, "meet/activity.html", {
-    "activity": activity, "users": users
+    "activity": activity, "users": users, "users_list": users_list
     })
 
 @login_required(login_url='/')
@@ -208,11 +211,14 @@ def editactivity(request, id):
 @login_required(login_url='/')
 def joinactivity(request, id):
     obj = Activity.objects.get(pk=id)
-    print(obj)
     activity_join = Joining(user=request.user, activity=obj)
-    print(activity_join)
-    print(activity_join.user)
-    print(activity_join.activity)
     activity_join.save()
-    #activity_join.save()
+    return redirect("display_activity", id=id)
+
+
+@login_required(login_url='/')
+def leaveactivity(request, id):
+    activity = Activity.objects.get(pk=id)
+    obj = Joining.objects.get(user=request.user, activity=activity)
+    obj.delete()
     return redirect("display_activity", id=id)

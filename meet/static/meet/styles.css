@@ -397,3 +397,9 @@ form{
 .fc_activity_button{
   margin-left: auto;
 }
+
+.activity_users{
+  line-height: 2;
+  letter-spacing: 0.1em;
+  word-spacing: 0.15em;
+}
