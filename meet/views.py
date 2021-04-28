@@ -151,6 +151,8 @@ def addactivity(request):
             user_activity_create = Activity(user=request.user, title=user_title, description=user_description)
             print(user_activity_create)
             user_activity_create.save()
+            activity1 = Joining(user=request.user, activity=user_activity_create)
+            activity1.save()
             messages.success(request, f'Your activity has been added successfully!')
             return redirect("index")
         else:
