@@ -189,8 +189,16 @@ def displayactivity(request, id):
 @login_required(login_url='/')
 def editactivity(request, id):
     obj = Activity.objects.get(pk=id)
-    print(obj)
-    form = ActivityUpdateForm(instance=obj)
-    return render(request, "meet/editactivity.html", {
-    "form": form
-    })
+    if request.method == "POST":
+        form = ActivityUpdateForm(request.POST, instance=obj)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Your Activity has been Edited successfully!')
+            return redirect("index")
+    if request.user == obj.user:
+        form = ActivityUpdateForm(instance=obj)
+        return render(request, "meet/editactivity.html", {
+        "form": form
+        })
+    else:
+        return redirect("index")

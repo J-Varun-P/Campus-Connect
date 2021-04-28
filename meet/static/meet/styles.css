@@ -115,7 +115,7 @@ html, body{
   align-self: flex-end;
 }
 
-.form_update *, .password_change_form input, .activity_form input, .activity_form textarea{
+.form_update *, .password_change_form input, .password_change_form textarea, .activity_form input, .activity_form textarea{
   color: orange;
 }
 
