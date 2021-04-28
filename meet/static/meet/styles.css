@@ -107,6 +107,10 @@ html, body{
   position: relative;
 }
 
+.indexpage_activity:hover{
+  cursor: pointer;
+}
+
 .indexpage_activity .indexpage_posted_on{
   align-self: flex-end;
 }

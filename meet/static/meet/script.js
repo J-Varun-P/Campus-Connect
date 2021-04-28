@@ -13,6 +13,19 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 }
 
+
+if(document.querySelectorAll('.indexpage_activity')){
+  console.log("We have it");
+  document.querySelectorAll('.indexpage_activity').forEach(item => {
+    item.onclick = () =>{
+      console.log("Here I am!");
+      window.location.href = `http://127.0.0.1:8000/activities/${item.dataset.id}`;
+    }
+  });
+
+}
+
+
 if(document.querySelector('#delete_activity_page')){
   document.querySelector('#delete_activity_page').style.display = 'none';
 }
@@ -31,7 +44,7 @@ if(document.querySelector('.fontawesome_common')){
   });
   document.querySelector('#delete_activity_page').style.display = 'none';
   document.querySelectorAll('.fontawesome_delete').forEach(item => {
-    item.onclick = () => {
+    item.onclick = (event) => {
       const element = item.parentElement.parentElement.children[2];
       document.querySelector('#delete_activity_page').style.display = 'block';
       const q = document.querySelector('#delete_activity_page_content_js');
@@ -45,6 +58,7 @@ if(document.querySelector('.fontawesome_common')){
 
       `;
       q.appendChild(p);
+      event.stopPropagation();
     }
   });
 
