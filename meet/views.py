@@ -169,8 +169,14 @@ def addactivity(request):
 @login_required(login_url='/')
 def myactivities(request):
     activities = Activity.objects.filter(user=request.user)
+    joined = Joining.objects.filter(user=request.user).all()
+    joined_list = []
+    print(joined)
+    for a in joined:
+        if a.activity.user != request.user:
+            joined_list.append(a)
     return render(request, "meet/myactivities.html", {
-    "activities": activities
+    "activities": activities 
     })
 
 
