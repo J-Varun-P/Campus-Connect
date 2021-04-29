@@ -394,6 +394,10 @@ form{
   margin: 15px 0;
 }
 
+.fc_activity > *{
+  margin: 5px 0;
+}
+
 .fc_activity_button{
   margin-left: auto;
 }
