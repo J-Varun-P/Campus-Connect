@@ -436,6 +436,10 @@ form{
   flex-direction: column;
 }
 
+.right_half > *{
+  margin: 5px;
+}
+
 .right_half_header, .right_half_input{
   flex-basis: 15%;
 }
@@ -461,10 +465,24 @@ input:focus, textarea:focus{
   outline: none;
 }
 
+.right_half_input *{
+  margin: 0;
+}
+
 .right_half_input textarea{
   resize: none;
 }
 
+.right_half_input button{
+  width: 100%;
+}
+
 .right_half_input .common_button:hover{
   color: orange;
+}
+
+.right_half_body{
+  border: 2px solid #563d76;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #563d76;
 }
