@@ -29,9 +29,11 @@
     </div>
   </div>
   <div class="right_half">
+    <!--
     <div class="right_half_header">
       <p>Write Something</p>
     </div>
+    -->
     <div class="right_half_body">
 
     </div>
@@ -39,7 +41,10 @@
       <form class="" method="post">
         {% csrf_token %}
         <!--<input type="text" name="comment" placeholder="Say Something over here!">-->
+        <!--
         <textarea name="name" placeholder="Say Something over here!"></textarea>
+        -->
+        {{ form }}
         <button type="submit" class="btn common_button">Submit</button>
       </form>
     </div>

@@ -39,9 +39,14 @@ class ActivityUpdateForm(forms.ModelForm):
         model = Activity
         fields = ['title', 'description']
 
+
 class activity(forms.Form):
     title = forms.CharField(label="Title", max_length=128)
     description = forms.CharField(label="Description", widget=forms.Textarea)
+
+
+class comment(forms.Form):
+    description = forms.CharField(label="", widget=forms.Textarea(attrs={"rows": 1, "placeholder": "Write Something Here!"}))
 
 
 def login_view(request):
@@ -191,6 +196,15 @@ def deleteactivity(request, id):
 @login_required(login_url='/')
 def displayactivity(request, id):
     if request.method == "POST":
+        user_comment = comment(request.POST)
+        #print(user_comment)
+        #print(user_comment["description"])
+        if user_comment.is_valid():
+            print("-----------")
+            print(user_comment.cleaned_data["description"])
+            print("-------------")
+        else:
+            print("Not Valid")
         return HttpResponse("Comment made successful")
     else:
         activity = Activity.objects.get(pk=id)
@@ -198,8 +212,9 @@ def displayactivity(request, id):
         users_list = []
         for user in users:
             users_list.append(user.user.username)
+        form = comment()
         return render(request, "meet/activity.html", {
-        "activity": activity, "users": users, "users_list": users_list
+        "activity": activity, "users": users, "users_list": users_list, "form": form
         })
 
 @login_required(login_url='/')
