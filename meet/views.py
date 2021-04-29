@@ -190,14 +190,17 @@ def deleteactivity(request, id):
 
 @login_required(login_url='/')
 def displayactivity(request, id):
-    activity = Activity.objects.get(pk=id)
-    users = Joining.objects.filter(activity=activity).all()
-    users_list = []
-    for user in users:
-        users_list.append(user.user.username)
-    return render(request, "meet/activity.html", {
-    "activity": activity, "users": users, "users_list": users_list
-    })
+    if request.method == "POST":
+        return HttpResponse("Comment made successful")
+    else:
+        activity = Activity.objects.get(pk=id)
+        users = Joining.objects.filter(activity=activity).all()
+        users_list = []
+        for user in users:
+            users_list.append(user.user.username)
+        return render(request, "meet/activity.html", {
+        "activity": activity, "users": users, "users_list": users_list
+        })
 
 @login_required(login_url='/')
 def editactivity(request, id):
