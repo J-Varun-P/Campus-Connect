@@ -17,14 +17,27 @@
           {% endif %}
         </div>
       </div>
-      <p class="activity_users">{{ activity.user.username }}</p>
+      <div class="activity_users_fc">
+        <p>{{ activity.user.username }}</p>
+        <p class="activity_users_author">Author of this Activity</p>
+      </div>
       {% for user in users %}
-        <p class="activity_users">{{ user.user.username }}</p>
+        {% if user.user.username != activity.user.username %}
+          <p class="activity_users">{{ user.user.username }}</p>
+        {% endif %}
       {% endfor %}
     </div>
   </div>
   <div class="right_half">
+    <div class="right_half_header">
+      <p>Write Your Thoughts</p>
+    </div>
+    <div class="right_half_body">
 
+    </div>
+    <div class="right_half_input">
+
+    </div>
   </div>
 </div>
 {% endblock %}

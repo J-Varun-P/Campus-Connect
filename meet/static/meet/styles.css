@@ -398,8 +398,34 @@ form{
   margin-left: auto;
 }
 
-.activity_users{
+.activity_users_fc{
+  display: flex;
   line-height: 2;
   letter-spacing: 0.1em;
   word-spacing: 0.15em;
+  margin: 10px 0;
+}
+
+.activity_users_fc > *{
+  border-bottom: 1px solid #563d76;
+}
+
+.activity_users_fc p.activity_users_author{
+  margin-left: auto;
+}
+
+.right_half *{
+  letter-spacing: 0.1em;
+  word-spacing: 0.15em;
+}
+
+.right_half_header p{
+  padding: 10px;
+  padding-right: 50px;
+  display: inline-block;
+  font-size: 21px;
+  color: orange;
+  border-radius: 10px;
+  border-left: 2px solid #563d76;
+  border-bottom: 2px solid #563d76;
 }
