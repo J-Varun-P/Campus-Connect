@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from .models import Profile, Activity, Joining
+from .models import Profile, Activity, Joining, Comment
 from django.core.paginator import Paginator
 
 class UserRegisterForm(UserCreationForm):
@@ -46,7 +46,7 @@ class activity(forms.Form):
 
 
 class comment(forms.Form):
-    description = forms.CharField(label="", widget=forms.Textarea(attrs={"rows": 1, "placeholder": "Write Something Here!"}))
+    description = forms.CharField(label="", widget=forms.Textarea(attrs={"rows": 3, "placeholder": "Write Something Here!"}))
 
 
 def login_view(request):
@@ -196,25 +196,22 @@ def deleteactivity(request, id):
 @login_required(login_url='/')
 def displayactivity(request, id):
     if request.method == "POST":
+        activity = Activity.objects.get(pk=id)
         user_comment = comment(request.POST)
-        #print(user_comment)
-        #print(user_comment["description"])
         if user_comment.is_valid():
-            print("-----------")
-            print(user_comment.cleaned_data["description"])
-            print("-------------")
-        else:
-            print("Not Valid")
-        return HttpResponse("Comment made successful")
+            obj = Comment(user=request.user, activity=activity, comment=user_comment.cleaned_data["description"])
+            obj.save()
+        return redirect("display_activity", id=id)
     else:
         activity = Activity.objects.get(pk=id)
         users = Joining.objects.filter(activity=activity).all()
+        users_comments=Comment.objects.filter(activity=activity)
         users_list = []
         for user in users:
             users_list.append(user.user.username)
         form = comment()
         return render(request, "meet/activity.html", {
-        "activity": activity, "users": users, "users_list": users_list, "form": form
+        "activity": activity, "users": users, "users_list": users_list, "form": form, "users_comments": users_comments
         })
 
 @login_required(login_url='/')

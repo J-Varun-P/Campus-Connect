@@ -445,12 +445,23 @@ form{
 }
 
 .right_half_body{
+  padding: 5px;
+  padding-bottom: 0;
   flex-basis: 85%;
+  height: 75%;
+  overflow: auto;
+}
+
+.users_comments_on_activity{
+  border: 2px solid orange;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 0 0 5px solid orange;
+  margin-bottom: 5px;
 }
 
 .right_half_input input, .right_half_input textarea{
   border-radius: 10px;
-  font-size: 21px;
   padding: 5px;
   height: 100%;
   width: 100%;
@@ -485,4 +496,13 @@ input:focus, textarea:focus{
   border: 2px solid #563d76;
   border-radius: 10px;
   box-shadow: 0 0 10px #563d76;
+}
+
+.right_half_body p{
+  margin-bottom: 0.5em;
+}
+
+.right_half_input form{
+  padding-top: 10px;
+  padding-bottom: 5px;
 }
