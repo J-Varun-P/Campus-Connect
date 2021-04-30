@@ -540,7 +540,3 @@ input:focus, textarea:focus{
   word-spacing: 0.15em;
   border-radius: 10px;
 }
-
-.searchactivities p{
-  margin-bottom: 0;
-}
