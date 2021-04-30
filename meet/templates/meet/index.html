@@ -1,4 +1,5 @@
 {% extends "meet/layout.html" %}
+{% load crispy_forms_tags %}
 {% load static %}
 {% block links %}
   <script type="text/javascript" src="{% static 'meet/script.js' %}"></script>
@@ -12,6 +13,16 @@
             </div>
           {% endfor %}
     {% endif %}
+    <div class="search_a_specific_activity">
+      <form class="" method="post">
+        <fieldset>
+          <legend>Search for an Activity</legend>
+          {% csrf_token %}
+          {{ form|crispy }}
+        </fieldset>
+        <button type="submit" class="btn btn-outline common_button">Search</button>
+      </form>
+    </div>
     {% for activity in activities %}
     <!--<a href="{% url 'display_activity' activity.id %}" class="text_decoration_none">-->
       <div class="indexpage_activity" data-id={{ activity.id }}>

@@ -48,6 +48,10 @@ class activity(forms.Form):
 class comment(forms.Form):
     description = forms.CharField(label="", widget=forms.Textarea(attrs={"rows": 3, "placeholder": "Write Something Here!"}))
 
+class SearchActivity(forms.Form):
+    username = forms.CharField(label="Username", max_length=128, required=False)
+    title = forms.CharField(label="Title", max_length=128, required=False)
+
 
 def login_view(request):
     if request.method == "POST":
@@ -103,8 +107,9 @@ def index(request):
     paginator = Paginator(activities, 2)
     page_num = request.GET.get('page')
     page_obj = paginator.get_page(page_num)
+    form = SearchActivity()
     return render(request, "meet/index.html", {
-    "activities": page_obj
+    "activities": page_obj, "form": form
     })
 
 

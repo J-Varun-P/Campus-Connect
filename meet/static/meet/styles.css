@@ -510,3 +510,23 @@ input:focus, textarea:focus{
   padding-top: 10px;
   padding-bottom: 5px;
 }
+
+.search_a_specific_activity .common_button:hover{
+  color: orange;
+}
+
+.search_a_specific_activity input{
+  color: orange;
+}
+
+.search_a_specific_activity *{
+  color: #563d76;
+}
+
+.search_a_specific_activity legend{
+  border-bottom: 1px solid orange;
+}
+
+.search_a_specific_activity button{
+  margin-top: 0;
+}
