@@ -272,20 +272,28 @@ def leaveactivity(request, id):
 
 @login_required(login_url='/')
 def searchactivities(request, name, title):
+    count = 0
     if name != "empty_user":
+        count = 1
         obj = User.objects.filter(username=name).first()
-        print(f"user object {obj}")
         if obj is None:
             messages.error(request, 'Username you provided does not exist')
             return redirect("index")
-        activities = Activity.objects.filter(user=obj)
-        for a in activities:
-            print(a)
+        activities = Activity.objects.filter(user=obj).order_by('-time')
     if title != "empty_title":
-        activities1 = Activity.objects.filter(title__icontains=title)
-        if len(activities1) == 0:
+        if count == 0:
+            activities = Activity.objects.filter(title__icontains=title).order_by('-time')
+        else:
+            obj = User.objects.filter(username=name).first()
+            activities = Activity.objects.filter(user=obj, title__icontains=title).order_by('-time')
+        if len(activities) == 0:
             messages.error(request, 'No activites matched your search activity field')
             return redirect("index")
-        for a in activities1:
-            print(a)
-    return HttpResponse("Valid Search")
+    for a in activities:
+        print(a)
+    paginator = Paginator(activities, 2)
+    page_num = request.GET.get('page')
+    page_obj = paginator.get_page(page_num)
+    return render(request, "meet/searchactivities.html", {
+    "activities": page_obj
+    })
