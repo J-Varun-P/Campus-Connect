@@ -530,3 +530,17 @@ input:focus, textarea:focus{
 .search_a_specific_activity button{
   margin-top: 0;
 }
+
+
+.searchactivities{
+  padding: 10px;
+  color: #563d76;
+  border: 2px solid orange;
+  letter-spacing: 0.1em;
+  word-spacing: 0.15em;
+  border-radius: 10px;
+}
+
+.searchactivities p{
+  margin-bottom: 0;
+}

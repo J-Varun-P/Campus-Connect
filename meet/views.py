@@ -295,5 +295,5 @@ def searchactivities(request, name, title):
     page_num = request.GET.get('page')
     page_obj = paginator.get_page(page_num)
     return render(request, "meet/searchactivities.html", {
-    "activities": page_obj
+    "activities": page_obj, "name": name, "title": title
     })
