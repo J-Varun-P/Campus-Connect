@@ -103,14 +103,31 @@ def logout_view(request):
 
 @login_required(login_url='/')
 def index(request):
-    activities = Activity.objects.all().order_by('-time')
-    paginator = Paginator(activities, 2)
-    page_num = request.GET.get('page')
-    page_obj = paginator.get_page(page_num)
-    form = SearchActivity()
-    return render(request, "meet/index.html", {
-    "activities": page_obj, "form": form
-    })
+    if request.method == "POST":
+        form = SearchActivity(request.POST)
+        if form.is_valid():
+            if form.cleaned_data["username"] == "" and form.cleaned_data["title"] == "":
+                messages.error(request, 'Please provide at least one field input for search')
+                return redirect("index")
+            name = form.cleaned_data["username"]
+            title = form.cleaned_data["title"]
+            if name == "":
+                name="empty_user"
+            if title == "":
+                title = "empty_title"
+            return redirect("search_activities", name=name, title=title)
+            return redirect("search_activities", name=form.cleaned_data["username"], title=form.cleaned_data["title"])
+            return HttpResponse("Valid Searching...")
+        return HttpResponse("Searching...")
+    else:
+        activities = Activity.objects.all().order_by('-time')
+        paginator = Paginator(activities, 2)
+        page_num = request.GET.get('page')
+        page_obj = paginator.get_page(page_num)
+        form = SearchActivity()
+        return render(request, "meet/index.html", {
+        "activities": page_obj, "form": form
+        })
 
 
 
@@ -251,3 +268,24 @@ def leaveactivity(request, id):
     obj = Joining.objects.get(user=request.user, activity=activity)
     obj.delete()
     return redirect("display_activity", id=id)
+
+
+@login_required(login_url='/')
+def searchactivities(request, name, title):
+    if name != "empty_user":
+        obj = User.objects.filter(username=name).first()
+        print(f"user object {obj}")
+        if obj is None:
+            messages.error(request, 'Username you provided does not exist')
+            return redirect("index")
+        activities = Activity.objects.filter(user=obj)
+        for a in activities:
+            print(a)
+    if title != "empty_title":
+        activities1 = Activity.objects.filter(title__icontains=title)
+        if len(activities1) == 0:
+            messages.error(request, 'No activites matched your search activity field')
+            return redirect("index")
+        for a in activities1:
+            print(a)
+    return HttpResponse("Valid Search")
