@@ -216,7 +216,7 @@ def myactivities(request):
     for a in joined:
         if a.activity not in deleted_list_temp:
             joined_list.append(a.activity)
-    
+
     #for b in deleted:
     #    users_list = []
     #    c = list(Joining.objects.filter(activity = b.activity).all())
@@ -228,6 +228,26 @@ def myactivities(request):
     return render(request, "meet/myactivities.html", {
     "activities": joined_list
     })
+
+
+@login_required(login_url='/')
+def deletedactivities(request):
+    deleted_list = []
+    deleted = Deleted.objects.all()
+    for a in deleted:
+        users_list = []
+        users_of_activity = list(Joining.objects.filter(activity = a.activity).all())
+        for user in users_of_activity:
+            users_list.append(user.user)
+        if request.user in users_list:
+            deleted_list.append(a.activity)
+    print("----")
+    print(deleted_list)
+    print("----")
+    return render(request, "meet/deletedactivities.html", {
+    "activities": deleted_list
+    })
+
 
 
 @login_required(login_url='/')
