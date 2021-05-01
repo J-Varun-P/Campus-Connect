@@ -217,14 +217,6 @@ def myactivities(request):
         if a.activity not in deleted_list_temp:
             joined_list.append(a.activity)
 
-    #for b in deleted:
-    #    users_list = []
-    #    c = list(Joining.objects.filter(activity = b.activity).all())
-    #    d = []
-    #    for e in c:
-    #        d.append(e.user)
-    #    if request.user in d:
-    #        deleted_list.append(b.activity)
     return render(request, "meet/myactivities.html", {
     "activities": joined_list
     })
@@ -241,9 +233,6 @@ def deletedactivities(request):
             users_list.append(user.user)
         if request.user in users_list:
             deleted_list.append(a.activity)
-    print("----")
-    print(deleted_list)
-    print("----")
     return render(request, "meet/deletedactivities.html", {
     "activities": deleted_list
     })
@@ -257,7 +246,17 @@ def deleteactivity(request, id):
     user_activity.save()
     #activity.delete()
     messages.success(request, f'Your activity has been deleted successfully!')
-    return redirect("index")
+    return redirect("deleted_activities")
+
+
+@login_required(login_url='/')
+def liveactivity(request, id):
+    activity = Activity.objects.get(pk=id)
+    user_activity = Deleted.objects.get(activity=activity)
+    user_activity.delete()
+    messages.success(request, f'Your activity is now live!')
+    return redirect("my_activities")
+
 
 @login_required(login_url='/')
 def displayactivity(request, id):

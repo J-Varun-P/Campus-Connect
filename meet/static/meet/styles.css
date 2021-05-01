@@ -591,3 +591,11 @@ p.activity_users{
 .hover_links_parent:hover .hover_links{
   display: block;
 }
+
+a.notextdecoration{
+  text-decoration: none;
+}
+
+a.notextdecoration:hover{
+  text-decoration: none; 
+}

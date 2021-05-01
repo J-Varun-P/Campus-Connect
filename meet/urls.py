@@ -16,6 +16,7 @@ urlpatterns = [
     path("index/delete-activity/<int:id>", views.deleteactivity, name="delete_activity"),
     path("my-activities/", views.myactivities, name="my_activities"),
     path("my-deleted-activities/", views.deletedactivities, name="deleted_activities"),
+    path("live-activity/<int:id>", views.liveactivity, name="live_activity"),
     path("search-activities/<str:name>/<str:title>", views.searchactivities, name="search_activities"),
     path("join-activity/<int:id>", views.joinactivity, name="join_activity"),
     path("leave-activity/<int:id>", views.leaveactivity, name="leave_activity"),
