@@ -18,12 +18,12 @@
         </div>
       </div>
       <div class="activity_users_fc">
-        <p>{{ activity.user.username }}</p>
+        <p><a href="{% url 'user_profile' activity.user.username %}">{{ activity.user.username }}</a></p>
         <p class="activity_users_author">Author of this Activity</p>
       </div>
       {% for user in users %}
         {% if user.user.username != activity.user.username %}
-          <p class="activity_users">{{ user.user.username }}</p>
+          <p class="activity_users"><a href="{% url 'user_profile' user.user.username %}">{{ user.user.username }}</a></p>
         {% endif %}
       {% endfor %}
     </div>

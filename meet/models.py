@@ -34,3 +34,9 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.user.username} commented on {self.activity.title}"
+
+class Deleted(models.Model):
+    activity = models.ForeignKey(Activity, on_delete=models.CASCADE, related_name="deleted_activities")
+
+    def __str__(self):
+        return f"{self.activity.user.username} deleted {self.activity}"

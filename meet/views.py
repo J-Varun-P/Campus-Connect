@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from .models import Profile, Activity, Joining, Comment
+from .models import Profile, Activity, Joining, Comment, Deleted
 from django.core.paginator import Paginator
 
 class UserRegisterForm(UserCreationForm):
@@ -121,7 +121,13 @@ def index(request):
         return HttpResponse("Searching...")
     else:
         activities = Activity.objects.all().order_by('-time')
-        paginator = Paginator(activities, 2)
+        activities_list = []
+        deleted = Deleted.objects.all()
+        for a in activities:
+            obj = Deleted.objects.filter(activity=a).first()
+            if obj is None:
+                activities_list.append(a)
+        paginator = Paginator(activities_list, 2)
         page_num = request.GET.get('page')
         page_obj = paginator.get_page(page_num)
         form = SearchActivity()
@@ -197,21 +203,34 @@ def addactivity(request):
 def myactivities(request):
     activities = Activity.objects.filter(user=request.user)
     joined = Joining.objects.filter(user=request.user).all()
-    joined_list = []
-    print(joined)
-    print(activities)
     for a in joined:
         if a.activity.user != request.user:
             joined_list.append(a)
+    deleted = Deleted.objects.all()
+    deleted_list= []
+    print("-------")
+    print(list(deleted))
+    print("-------")
+    for b in deleted:
+        users_list = []
+        c = list(Joining.objects.filter(activity = b.activity).all())
+        d = []
+        for e in c:
+            d.append(e.user)
+        if request.user in d:
+            deleted_list.append(b.activity)
+    print(deleted_list)
     return render(request, "meet/myactivities.html", {
-    "activities": joined
+    "activities": joined, "deleted": deleted_list
     })
 
 
 @login_required(login_url='/')
 def deleteactivity(request, id):
     activity = Activity.objects.get(pk=id)
-    activity.delete()
+    user_activity = Deleted(activity=activity)
+    user_activity.save()
+    #activity.delete()
     messages.success(request, f'Your activity has been deleted successfully!')
     return redirect("index")
 
@@ -303,6 +322,8 @@ def searchactivities(request, name, title):
 def userprofile(request, name):
     obj = User.objects.get(username=name)
     lines = Profile.objects.get(user=obj).description.splitlines()
+    if len(lines) == 1 and lines[0] == "Say Something about yourself!":
+        lines[0] = "The User has not filled in their Profile yet!"
     return render(request, "meet/userprofile.html", {
     "lines": lines, "username": name
     })
