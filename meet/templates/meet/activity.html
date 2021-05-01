@@ -1,4 +1,8 @@
 {% extends "meet/layout.html" %}
+{% load static %}
+{% block links %}
+  <script type="text/javascript" src="{% static 'meet/script.js' %}"></script>
+{% endblock %}
 {% block body %}
 <div class="fc_display">
   <div class="left_half">
@@ -23,7 +27,12 @@
       </div>
       {% for user in users %}
         {% if user.user.username != activity.user.username %}
-          <p class="activity_users"><a href="{% url 'user_profile' user.user.username %}">{{ user.user.username }}</a></p>
+          <p class="activity_users">
+            <a href="{% url 'user_profile' user.user.username %}">{{ user.user.username }}</a>
+            {% if kickuserout == "True" %}
+            <a href="{% url 'kick_user_out' user.user.id  activity.id %}" class="user-minus"><i class="fas fa-user-minus"></i></a>
+            {% endif %}
+          </p>
         {% endif %}
       {% endfor %}
     </div>

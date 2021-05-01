@@ -269,15 +269,33 @@ def displayactivity(request, id):
         return redirect("display_activity", id=id)
     else:
         activity = Activity.objects.get(pk=id)
+        deleted = Deleted.objects.all()
+        deleted_list= []
+        users_list_temp = []
+        for x in deleted:
+            deleted_list.append(x.activity)
+        if activity in deleted_list:
+            users_of_activity = list(Joining.objects.filter(activity = activity).all())
+            for user in users_of_activity:
+                users_list_temp.append(user.user)
+            if request.user not in users_list_temp:
+                return redirect("index")
         users = Joining.objects.filter(activity=activity).all()
         users_comments=Comment.objects.filter(activity=activity)
         users_list = []
         for user in users:
             users_list.append(user.user.username)
         form = comment()
+        print(request.user)
+        print(activity.user)
+        if request.user == activity.user:
+            kickuserout = "True"
+        else:
+            kickuserout = "False"
         return render(request, "meet/activity.html", {
-        "activity": activity, "users": users, "users_list": users_list, "form": form, "users_comments": users_comments
+        "activity": activity, "users": users, "users_list": users_list, "form": form, "users_comments": users_comments, "kickuserout": kickuserout
         })
+
 
 @login_required(login_url='/')
 def editactivity(request, id):
@@ -352,3 +370,13 @@ def userprofile(request, name):
     "lines": lines, "username": name
     })
     return HttpResponse(f"This is {name}'s profile'")
+
+
+
+@login_required(login_url='/')
+def kickuserout(request, u_id, a_id):
+    user = User.objects.get(pk=u_id)
+    activity = Activity.objects.get(pk=a_id)
+    joining = Joining.objects.get(user=user, activity=activity)
+    joining.delete()
+    return redirect("display_activity", id=a_id)

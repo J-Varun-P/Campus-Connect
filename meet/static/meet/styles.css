@@ -405,7 +405,9 @@ form{
 .activity_users_fc{
   display: flex;
   line-height: 2;
-  letter-spacing: 0.1em;
+  letter-spacin
+
+  g: 0.1em;
   word-spacing: 0.15em;
   margin: 10px 0;
 }
@@ -414,9 +416,13 @@ form{
   border-bottom: 1px solid #563d76;
 }
 
+
+
 .activity_users_fc p.activity_users_author{
   margin-left: auto;
 }
+
+
 
 .right_half *{
   letter-spacing: 0.1em;
@@ -541,9 +547,16 @@ input:focus, textarea:focus{
   border-radius: 10px;
 }
 
+.spacing{
+  letter-spacing: 0.1em;
+  word-spacing: 0.15em;
+}
+
 .user_links a, .activity_users_fc a, .activity_users a{
   text-decoration: none;
 }
+
+
 
 .user_links a:hover{
   text-decoration: underline;
@@ -551,6 +564,21 @@ input:focus, textarea:focus{
 
 p.activity_users{
   margin-bottom: 5px;
+}
+
+.activity_users{
+  padding: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.user-minus{
+  margin-left: auto;
+}
+
+.fa-user-minus:hover{
+  cursor: pointer;
 }
 
 .indexpage_activity_deleted{
@@ -597,5 +625,5 @@ a.notextdecoration{
 }
 
 a.notextdecoration:hover{
-  text-decoration: none; 
+  text-decoration: none;
 }
