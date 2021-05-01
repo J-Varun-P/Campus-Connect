@@ -201,32 +201,32 @@ def addactivity(request):
 
 @login_required(login_url='/')
 def myactivities(request):
-    joined = Joining.objects.filter(user=request.user).all()
-    joined_list = []
+
     deleted = Deleted.objects.all()
     deleted_list= []
     deleted_list_temp = []
-    joined_list_temp = []
     for x in deleted:
         deleted_list_temp.append(x.activity)
+
+    joined = Joining.objects.filter(user=request.user).all()
+    joined_list = []
+    joined_list_temp = []
     for x in joined:
         joined_list_temp.append(x.activity)
     for a in joined:
         if a.activity not in deleted_list_temp:
             joined_list.append(a.activity)
-    for b in deleted:
-        users_list = []
-        c = list(Joining.objects.filter(activity = b.activity).all())
-        d = []
-        for e in c:
-            d.append(e.user)
-        if request.user in d:
-            deleted_list.append(b.activity)
-    print(deleted_list)
-    print("-----")
-    print(joined_list)
+    
+    #for b in deleted:
+    #    users_list = []
+    #    c = list(Joining.objects.filter(activity = b.activity).all())
+    #    d = []
+    #    for e in c:
+    #        d.append(e.user)
+    #    if request.user in d:
+    #        deleted_list.append(b.activity)
     return render(request, "meet/myactivities.html", {
-    "activities": joined_list, "deleted": deleted_list
+    "activities": joined_list
     })
 
 

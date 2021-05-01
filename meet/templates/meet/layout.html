@@ -15,7 +15,13 @@
     <div class="navigation">
       <a href="{% url 'index' %}">Home</a>
       <a href="{% url 'add_activity' %}">Create an Activity</a>
-      <a href="{% url 'my_activities' %}">My Activities</a>
+      <div class="hover_links_parent">
+        <a href="{% url 'my_activities' %}">My Activities</a>
+        <div class="hover_links">
+          <a href="{% url 'my_activities' %}">Live</a>
+          <a href="#">Deleted</a>
+        </div>
+      </div>
       <a href="{% url 'profile' %}" class="linktotheright">Profile</a>
       <a href="{% url 'password_change' %}">Change Password</a>
       <a href="{% url 'logout' %}">Logout</a>

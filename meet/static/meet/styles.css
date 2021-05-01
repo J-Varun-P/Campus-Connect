@@ -564,3 +564,30 @@ p.activity_users{
 .indexpage_activity a:hover{
   text-decoration: underline;
 }
+
+.hover_links_parent{
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.hover_links{
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background: #563d76;
+  opacity: 0.8;
+}
+
+.hover_links a{
+  display: block;
+  border-top: 1px solid #fff;
+}
+
+.hover_links_parent:hover .hover_links{
+  display: block;
+}
