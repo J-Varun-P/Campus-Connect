@@ -55,7 +55,7 @@ if(document.querySelector('.fontawesome_common')){
 
       <p>Are you sure you want to delete your Activity?</p>
       <p>${element.innerHTML}</p>
-      <a href="delete-activity/${item.dataset.id}" class="btn btn-outline-primary common_button">Confirm</a>
+      <a href="http://127.0.0.1:8000/index/delete-activity/${item.dataset.id}" class="btn btn-outline-primary common_button">Confirm</a>
 
       `;
       q.appendChild(p);

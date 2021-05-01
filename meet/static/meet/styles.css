@@ -552,3 +552,15 @@ input:focus, textarea:focus{
 p.activity_users{
   margin-bottom: 5px;
 }
+
+.indexpage_activity_deleted{
+  border-color: red;
+}
+
+.indexpage_activity a{
+  text-decoration: none;
+}
+
+.indexpage_activity a:hover{
+  text-decoration: underline;
+}
