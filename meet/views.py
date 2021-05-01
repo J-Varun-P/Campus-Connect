@@ -297,3 +297,13 @@ def searchactivities(request, name, title):
     return render(request, "meet/searchactivities.html", {
     "activities": page_obj, "name": name, "title": title
     })
+
+
+@login_required(login_url='/')
+def userprofile(request, name):
+    obj = User.objects.get(username=name)
+    lines = Profile.objects.get(user=obj).description.splitlines()
+    return render(request, "meet/userprofile.html", {
+    "lines": lines, "username": name
+    })
+    return HttpResponse(f"This is {name}'s profile'")

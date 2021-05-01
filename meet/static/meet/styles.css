@@ -540,3 +540,11 @@ input:focus, textarea:focus{
   word-spacing: 0.15em;
   border-radius: 10px;
 }
+
+.user_links a{
+  text-decoration: none;
+}
+
+.user_links a:hover{
+  text-decoration: underline;
+}

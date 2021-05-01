@@ -32,8 +32,8 @@
             <i data-id={{ activity.id }} class="far fa-trash-alt fontawesome_delete fontawesome_common"></i>
           </div>
         {% endif %}
-        <div>
-          {{ activity.user.username }}
+        <div class="user_links">
+          <a href="{% url 'user_profile' activity.user.username %}">{{ activity.user.username }}</a>
         </div>
         <div>
           {{ activity.title }}
