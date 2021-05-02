@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from .models import Profile, Activity, Joining, Comment, Deleted
+from .models import Profile, Activity, Joining, Comment, Deleted, Banneduser
 from django.core.paginator import Paginator
 
 class UserRegisterForm(UserCreationForm):
@@ -317,8 +317,12 @@ def displayactivity(request, id):
             kickuserout = "True"
         else:
             kickuserout = "False"
+        banned = Banneduser.objects.filter(activity=activity).all()
+        banned_users = []
+        for banned_user in banned:
+            banned_users.append(banned_user.user)
         return render(request, "meet/activity.html", {
-        "activity": activity, "users": users, "users_list": users_list, "form": form, "users_comments": users_comments, "kickuserout": kickuserout
+        "activity": activity, "users": users, "users_list": users_list, "form": form, "users_comments": users_comments, "kickuserout": kickuserout, "banned_users": banned_users
         })
 
 
@@ -417,3 +421,14 @@ def kickuserout(request, u_id, a_id):
     joining = Joining.objects.get(user=user, activity=activity)
     joining.delete()
     return redirect("display_activity", id=a_id)
+
+
+
+@login_required(login_url='/')
+def banuser(request, u_id, a_id):
+    user = User.objects.get(pk=u_id)
+    activity = Activity.objects.get(pk=a_id)
+    if request.user == activity.user:
+        ban_user = Banneduser(user=user, activity=activity)
+        ban_user.save()
+    return redirect("display_activity", id=activity.id)

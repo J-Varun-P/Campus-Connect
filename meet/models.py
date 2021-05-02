@@ -40,3 +40,10 @@ class Deleted(models.Model):
 
     def __str__(self):
         return f"{self.activity.user.username} deleted {self.activity}"
+
+class Banneduser(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="banned_u")
+    activity = models.ForeignKey(Activity, on_delete=models.CASCADE, related_name="banned_a")
+
+    def __str__(self):
+        return f"{self.user.username} banned from {self.activity.title} activity"

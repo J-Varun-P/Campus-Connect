@@ -45,6 +45,7 @@
     -->
     <div class="right_half_body">
       {% for comment in users_comments %}
+        {% if comment.user not in banned_users %}
         <div class="users_comments_on_activity">
           {% if request.user == comment.user%}
             <div class="fontawesome_icons">
@@ -54,7 +55,7 @@
           {% endif %}
           {% if request.user == activity.user and comment.user != request.user %}
             <div class="fontawesome_icons">
-              <a href="#"><i class="fas fa-ban" title="ban user"></i></a>
+              <a href="{% url 'ban_user' comment.user.id comment.activity.id %}"><i class="fas fa-ban" title="ban user"></i></a>
               <i data-id={{ comment.id }} class="far fa-trash-alt fontawesome_delete_comment fontawesome_common"></i>
             </div>
           {% endif %}
@@ -62,8 +63,10 @@
           <h5>{{ comment.user.username }}</h5>
           <p>{{ comment.comment }}</p>
         </div>
+        {% endif %}
       {% endfor %}
     </div>
+    {% if request.user not in banned_users %}
     <div class="right_half_input">
       <form class="" method="post">
         {% csrf_token %}
@@ -75,6 +78,7 @@
         <button type="submit" class="btn common_button">Submit</button>
       </form>
     </div>
+    {% endif %}
     <div id="delete_activity_page">
       <div class="delete_activity_conform_page">
         <div class="delete_activity_page_content" id="delete_activity_page_content">
