@@ -248,7 +248,7 @@ def deleteactivity(request, id):
     user_activity = Deleted(activity=activity)
     user_activity.save()
     #activity.delete()
-    messages.success(request, f'Your activity has been deleted successfully!')
+    messages.success(request, f'Your activity has been removed!')
     return redirect("deleted_activities")
 
 
@@ -258,7 +258,11 @@ def permanentdelete(request, id):
     if request.user != activity.user:
         messages.error(request, f"You can not delete other's activities!")
         return redirect("index")
-    return HttpResponse(f"Delete")
+    activity.delete()
+    messages.success(request, f'Your activity has been deleted successfully!')
+    return redirect("index")
+
+
 
 @login_required(login_url='/')
 def liveactivity(request, id):
@@ -332,7 +336,12 @@ def editactivity(request, id):
 @login_required(login_url='/')
 def joinactivity(request, id):
     obj = Activity.objects.get(pk=id)
+    temp = Joining.objects.filter(user=request.user, activity=obj).first()
+    if temp is not None:
+        messages.error(request, f"Please don't mess with the url patterns, Thanks!")
+        return redirect("index")
     activity_join = Joining(user=request.user, activity=obj)
+    print(f"id is {request.user.id}")
     activity_join.save()
     return redirect("display_activity", id=id)
 
@@ -340,6 +349,10 @@ def joinactivity(request, id):
 @login_required(login_url='/')
 def leaveactivity(request, id):
     activity = Activity.objects.get(pk=id)
+    temp = Joining.objects.filter(user=request.user, activity=activity).first()
+    if temp is None:
+        messages.error(request, f"Please don't mess with the url patterns, Thanks!")
+        return redirect("index")
     obj = Joining.objects.get(user=request.user, activity=activity)
     obj.delete()
     return redirect("display_activity", id=id)
@@ -391,6 +404,9 @@ def userprofile(request, name):
 def kickuserout(request, u_id, a_id):
     user = User.objects.get(pk=u_id)
     activity = Activity.objects.get(pk=a_id)
+    if request.user != activity.user:
+        messages.error(request, f"Please don't mess with the url patterns, Thanks!")
+        return redirect("index" )
     joining = Joining.objects.get(user=user, activity=activity)
     joining.delete()
     return redirect("display_activity", id=a_id)

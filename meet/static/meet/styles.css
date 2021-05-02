@@ -627,3 +627,16 @@ a.notextdecoration{
 a.notextdecoration:hover{
   text-decoration: none;
 }
+
+.delete_activity_page_content_js_buttons{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.delete_activity_page_content_js_buttons > *{
+  margin: 5px 0;
+}
+
+.delete_activity_page_content_js_buttons_2{
+  margin-left: auto;
+}
