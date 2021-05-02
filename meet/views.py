@@ -242,6 +242,9 @@ def deletedactivities(request):
 @login_required(login_url='/')
 def deleteactivity(request, id):
     activity = Activity.objects.get(pk=id)
+    if request.user != activity.user:
+        messages.error(request, f"You can not remove other's activities!")
+        return redirect("index")
     user_activity = Deleted(activity=activity)
     user_activity.save()
     #activity.delete()
@@ -250,8 +253,19 @@ def deleteactivity(request, id):
 
 
 @login_required(login_url='/')
+def permanentdelete(request, id):
+    activity = Activity.objects.get(pk=id)
+    if request.user != activity.user:
+        messages.error(request, f"You can not delete other's activities!")
+        return redirect("index")
+    return HttpResponse(f"Delete")
+
+@login_required(login_url='/')
 def liveactivity(request, id):
     activity = Activity.objects.get(pk=id)
+    if request.user != activity.user:
+        messages.error(request, f"You can not make other's activities live!")
+        return redirect("index")
     user_activity = Deleted.objects.get(activity=activity)
     user_activity.delete()
     messages.success(request, f'Your activity is now live!')

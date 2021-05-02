@@ -44,6 +44,15 @@ if(document.querySelector('.fontawesome_common')){
     }
   });
   document.querySelector('#delete_activity_page').style.display = 'none';
+  if(document.querySelector('.fontawesome_delete_permanent')){
+    console.log("Permanent delete!");
+    document.querySelectorAll('.fontawesome_delete_permanent').forEach(item => {
+      item.onclick = (event) =>{
+        event.stopPropagation();
+      }
+    });
+  }
+
   document.querySelectorAll('.fontawesome_delete').forEach(item => {
     item.onclick = (event) => {
       const element = item.parentElement.parentElement.children[2];

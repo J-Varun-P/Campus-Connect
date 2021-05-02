@@ -30,7 +30,7 @@
           <p class="activity_users">
             <a href="{% url 'user_profile' user.user.username %}">{{ user.user.username }}</a>
             {% if kickuserout == "True" %}
-            <a href="{% url 'kick_user_out' user.user.id  activity.id %}" class="user-minus"><i class="fas fa-user-minus"></i></a>
+            <a title="kick the user out" href="{% url 'kick_user_out' user.user.id  activity.id %}" class="user-minus"><i class="fas fa-user-minus"></i></a>
             {% endif %}
           </p>
         {% endif %}
