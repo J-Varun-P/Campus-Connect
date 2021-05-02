@@ -45,13 +45,15 @@ html, body{
 .left_half{
   border: none;
   font-size: 18px;
+  padding-top: 0;
 }
 
 .left_half p{
   margin: 0;
 }
 
-.left_half h4, .left_half > p{
+
+.left_half h4, .left_half_header  p{
   padding-left: 10px;
   border-left: 4px solid orange;
   border-top: 4px solid orange;
@@ -59,17 +61,22 @@ html, body{
   border-radius: 10px;
 }
 
-.left_half > p{
+.left_half_header  p{
   border: none;
   border-right: 4px solid orange;
   border-bottom: 4px solid orange;
 }
 
-.left_half_members{
-  height: 200px;
+.left_half_members, .left_half_banned_users{
+  flex-basis: 50%;
   padding: 10px;
   border: 1px solid navy;
   overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.left_half_header, .left_half_banned_users{
+  flex-basis: 25%;
 }
 
 .left_half_members h5{
@@ -408,9 +415,7 @@ form{
 .activity_users_fc{
   display: flex;
   line-height: 2;
-  letter-spacin
-
-  g: 0.1em;
+  letter-spacing: 0.1em;
   word-spacing: 0.15em;
   margin: 10px 0;
 }
@@ -443,13 +448,13 @@ form{
   border-bottom: 2px solid #563d76;
 }
 
-.right_half{
+.right_half, .left_half{
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.right_half > *{
+.right_half > *, .left_half > *{
   margin: 5px;
 }
 

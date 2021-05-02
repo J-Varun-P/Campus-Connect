@@ -6,8 +6,10 @@
 {% block body %}
 <div class="fc_display">
   <div class="left_half">
-    <h4>{{ activity.title }}</h4>
-    <p>{{ activity.description }}</p>
+    <div class="left_half_header">
+      <h4>{{ activity.title }}</h4>
+      <p>{{ activity.description }}</p>
+    </div>
     <div class="left_half_members">
       <div class="fc_activity">
         <h5>Members in this activity ({{ users_list|length }})</h5>
@@ -35,6 +37,9 @@
           </p>
         {% endif %}
       {% endfor %}
+    </div>
+    <div class="left_half_banned_users">
+
     </div>
   </div>
   <div class="right_half">
