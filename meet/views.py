@@ -263,6 +263,13 @@ def permanentdelete(request, id):
     return redirect("index")
 
 
+@login_required(login_url='/')
+def commentdelete(request, id):
+    comment = Comment.objects.get(pk=id)
+    if request.user == comment.user or request.user == comment.activity.user:
+        comment.delete()
+    return redirect("display_activity", id=comment.activity.id)
+
 
 @login_required(login_url='/')
 def liveactivity(request, id):

@@ -71,6 +71,38 @@ if(document.querySelector('.fontawesome_common')){
     });
   }
 
+
+
+  if(document.querySelector('.fontawesome_delete_comment')){
+    console.log("Delete Comment");
+    document.querySelectorAll('.fontawesome_delete_comment').forEach(item => {
+      item.onclick = (event) =>{
+        const element = item.parentElement.parentElement.children[2];
+        document.querySelector('#delete_activity_page').style.display = 'block';
+        const q = document.querySelector('#delete_activity_page_content_js');
+        const p = document.createElement('div');
+        p.classList.add('delete_activity_page_content_js1')
+        p.innerHTML = `
+
+        <p>Are you sure you want to delete the Comment?</p>
+        <p>${element.innerHTML}</p>
+
+        `;
+        q.appendChild(p);
+        document.querySelector('.delete_activity_page_content_js_buttons_1').innerHTML = `
+
+        <a href="http://127.0.0.1:8000/comment-delete/${item.dataset.id}" class="btn btn-outline-primary common_button">Confirm</a>
+
+
+        `;
+        event.stopPropagation();
+      }
+    });
+  }
+
+
+
+
   document.querySelectorAll('.fontawesome_delete').forEach(item => {
     item.onclick = (event) => {
       const element = item.parentElement.parentElement.children[2];

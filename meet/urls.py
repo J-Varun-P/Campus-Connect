@@ -19,6 +19,7 @@ urlpatterns = [
     path("live-activity/<int:id>", views.liveactivity, name="live_activity"),
     path("kick-user-out/<int:u_id>/<int:a_id>", views.kickuserout, name="kick_user_out"),
     path("permanent-delete/<int:id>", views.permanentdelete, name="permanent_delete"),
+    path("comment-delete/<int:id>", views.commentdelete, name="comment_delete"),
     path("search-activities/<str:name>/<str:title>", views.searchactivities, name="search_activities"),
     path("join-activity/<int:id>", views.joinactivity, name="join_activity"),
     path("leave-activity/<int:id>", views.leaveactivity, name="leave_activity"),

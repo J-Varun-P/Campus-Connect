@@ -640,3 +640,11 @@ a.notextdecoration:hover{
 .delete_activity_page_content_js_buttons_2{
   margin-left: auto;
 }
+
+.users_comments_on_activity{
+  position: relative;
+}
+
+.fa-ban:hover{
+  cursor: pointer;
+}

@@ -46,6 +46,19 @@
     <div class="right_half_body">
       {% for comment in users_comments %}
         <div class="users_comments_on_activity">
+          {% if request.user == comment.user%}
+            <div class="fontawesome_icons">
+              <a href="{% url 'edit_activity' comment.activity.id %}"><i class="far fa-edit fontawesome_edit_comment fontawesome_common"></i></a>
+              <i data-id={{ comment.id }} class="far fa-trash-alt fontawesome_delete_comment fontawesome_common"></i>
+            </div>
+          {% endif %}
+          {% if request.user == activity.user and comment.user != request.user %}
+            <div class="fontawesome_icons">
+              <a href="#"><i class="fas fa-ban" title="ban user"></i></a>
+              <i data-id={{ comment.id }} class="far fa-trash-alt fontawesome_delete_comment fontawesome_common"></i>
+            </div>
+          {% endif %}
+
           <h5>{{ comment.user.username }}</h5>
           <p>{{ comment.comment }}</p>
         </div>
@@ -61,6 +74,26 @@
         {{ form }}
         <button type="submit" class="btn common_button">Submit</button>
       </form>
+    </div>
+    <div id="delete_activity_page">
+      <div class="delete_activity_conform_page">
+        <div class="delete_activity_page_content" id="delete_activity_page_content">
+          <h4>Delete Activity!</h4>
+          <div id="closeform">
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+          </div>
+          <div id="delete_activity_page_content_js"></div>
+          <div class="delete_activity_page_content_js_buttons">
+            <div class="delete_activity_page_content_js_buttons_1">
+
+            </div>
+            <div class="delete_activity_page_content_js_buttons_2">
+              <button class="btn btn-outline common_button cancel_delete">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
