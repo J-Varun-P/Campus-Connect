@@ -45,6 +45,12 @@ class activity(forms.Form):
     description = forms.CharField(label="Description", widget=forms.Textarea)
 
 
+class ActivityComment(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['comment']
+
+
 class comment(forms.Form):
     description = forms.CharField(label="", widget=forms.Textarea(attrs={"rows": 3, "placeholder": "Write Something Here!"}))
 
@@ -344,6 +350,7 @@ def editactivity(request, id):
         "form": form
         })
     else:
+        messages.error(request, f"You can not edit someone's activity")
         return redirect("index")
 
 
@@ -450,3 +457,23 @@ def unbanuser(request, u_id, a_id):
         joining = Joining(user=user, activity=activity)
         joining.save()
     return redirect("display_activity", id=activity.id)
+
+
+@login_required(login_url='/')
+def commentedit(request, id):
+    obj = Comment.objects.filter(pk=id).first()
+    if request.method == "POST":
+        comment_form = ActivityComment(request.POST, instance=obj)
+        if comment_form.is_valid():
+            comment_form.save()
+            return redirect("display_activity", id=obj.activity.id)
+    if obj is None:
+        messages.error(request, f"Please don't mess with the url patterns, Thanks!")
+        return redirect("index")
+    if request.user != obj.user:
+        messages.error(request, f"You can not edit other's comments")
+        return redirect("index")
+    comment_form = ActivityComment(instance=obj)
+    return render(request, "meet/editactivitycomment.html", {
+    "form": comment_form
+    })

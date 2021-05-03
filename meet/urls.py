@@ -20,6 +20,7 @@ urlpatterns = [
     path("kick-user-out/<int:u_id>/<int:a_id>", views.kickuserout, name="kick_user_out"),
     path("permanent-delete/<int:id>", views.permanentdelete, name="permanent_delete"),
     path("comment-delete/<int:id>", views.commentdelete, name="comment_delete"),
+    path("comment-edit/<int:id>/", views.commentedit, name="comment_edit"),
     path("ban-user/<int:u_id>/<int:a_id>", views.banuser, name="ban_user"),
     path("unban-user/<int:u_id>/<int:a_id>", views.unbanuser, name="unban_user"),
     path("search-activities/<str:name>/<str:title>", views.searchactivities, name="search_activities"),

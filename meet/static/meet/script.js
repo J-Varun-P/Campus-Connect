@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   }
+
+
   if(document.querySelector('#profile_form')){
   document.querySelector('#profile_form').style.display = 'none';
   document.querySelector('#updatebutton').onclick = () => {

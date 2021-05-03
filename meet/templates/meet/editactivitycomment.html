@@ -1,0 +1,16 @@
+{% extends "meet/layout.html" %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="fc">
+    <form method="POST" class="form-group password_forms password_change_form">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Edit Comment</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit" id="password_change">Edit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
