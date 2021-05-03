@@ -13,6 +13,7 @@
     <div class="left_half_members">
       <div class="fc_activity">
         <h5>Members in this activity ({{ users_list|length }})</h5>
+        {% if request.user not in banned_users %}
         <div class="fc_activity_button">
           {% if request.user != activity.user %}
           {% if request.user.username in users_list %}
@@ -22,6 +23,7 @@
           {% endif %}
           {% endif %}
         </div>
+        {% endif %}
       </div>
       <div class="activity_users_fc">
         <p><a href="{% url 'user_profile' activity.user.username %}">{{ activity.user.username }}</a></p>
@@ -39,7 +41,12 @@
       {% endfor %}
     </div>
     <div class="left_half_banned_users">
-
+      <h5>Banned Users ({{ banned_users|length }})</h5>
+      {% for users in banned_users %}
+        <p>{{ users.username }}</p>
+        {% empty %}
+          <p>No users are banned from this activity</p>
+      {% endfor %}
     </div>
   </div>
   <div class="right_half">

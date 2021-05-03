@@ -67,8 +67,8 @@ html, body{
   border-bottom: 4px solid orange;
 }
 
-.left_half_members, .left_half_banned_users{
-  flex-basis: 50%;
+.left_half_members{
+  min-height: 50%;
   padding: 10px;
   border: 1px solid navy;
   overflow-y: auto;
@@ -76,7 +76,7 @@ html, body{
 }
 
 .left_half_header, .left_half_banned_users{
-  flex-basis: 25%;
+  max-height: 25%;
 }
 
 .left_half_members h5{
@@ -659,4 +659,12 @@ a.notextdecoration:hover{
 
 .fa-ban:hover{
   cursor: pointer;
+}
+
+.left_half_banned_users{
+  padding-left: 10px;
+}
+
+.left_half_banned_users h5{
+  text-decoration: underline;
 }

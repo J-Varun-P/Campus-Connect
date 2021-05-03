@@ -321,6 +321,9 @@ def displayactivity(request, id):
         banned_users = []
         for banned_user in banned:
             banned_users.append(banned_user.user)
+        if request.user in banned_users:
+            messages.error(request, f"You're banned from  {activity.title}  activity")
+            return redirect("index")
         return render(request, "meet/activity.html", {
         "activity": activity, "users": users, "users_list": users_list, "form": form, "users_comments": users_comments, "kickuserout": kickuserout, "banned_users": banned_users
         })
@@ -431,4 +434,7 @@ def banuser(request, u_id, a_id):
     if request.user == activity.user:
         ban_user = Banneduser(user=user, activity=activity)
         ban_user.save()
+        joining = Joining.objects.filter(user=user, activity=activity).first()
+        if joining is not None:
+            joining.delete()
     return redirect("display_activity", id=activity.id)
