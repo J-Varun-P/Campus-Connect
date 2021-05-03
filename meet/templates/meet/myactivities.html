@@ -32,6 +32,26 @@
       </div>
     {% endfor %}
   </div>
+  <div class="pagination_links">
+
+    {% if activities.has_previous %}
+    <a class="btn btn-outline-info" href="?page=1">First</a>
+    <!--<a class="btn btn-outline-info" href="?page={{ activities.previous_page_number }}">Previous</a>-->
+    {% endif %}
+
+    {% for num in activities.paginator.page_range %}
+      {% if activities.number == num %}
+        <a id="current_pagination_link" class="btn btn-info" href="?page={{ num }}">{{ num }}</a>
+      {% elif num > activities.number|add:'-3' and num < activities.number|add:'3' %}
+        <a class="btn btn-outline-info" href="?page={{ num }}">{{ num }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if activities.has_next %}
+    <!--<a class="btn btn-outline-info" href="?page={{ activities.next_page_number }}">Next</a>-->
+    <a class="btn btn-outline-info" href="?page={{ activities.paginator.num_pages }}">Last</a>
+    {% endif %}
+  </div>
   <div id="delete_activity_page">
     <div class="delete_activity_conform_page">
       <div class="delete_activity_page_content" id="delete_activity_page_content">

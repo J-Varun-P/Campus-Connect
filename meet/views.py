@@ -222,9 +222,11 @@ def myactivities(request):
     for a in joined:
         if a.activity not in deleted_list_temp:
             joined_list.append(a.activity)
-
+    paginator = Paginator(joined_list, 2)
+    page_num = request.GET.get('page')
+    page_obj = paginator.get_page(page_num)
     return render(request, "meet/myactivities.html", {
-    "activities": joined_list
+    "activities": page_obj
     })
 
 
@@ -239,8 +241,11 @@ def deletedactivities(request):
             users_list.append(user.user)
         if request.user in users_list:
             deleted_list.append(a.activity)
+    paginator = Paginator(deleted_list, 2)
+    page_num = request.GET.get('page')
+    page_obj = paginator.get_page(page_num)
     return render(request, "meet/deletedactivities.html", {
-    "activities": deleted_list
+    "activities": page_obj
     })
 
 
