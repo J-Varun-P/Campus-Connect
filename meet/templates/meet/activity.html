@@ -43,7 +43,7 @@
     <div class="left_half_banned_users">
       <h5>Banned Users ({{ banned_users|length }})</h5>
       {% for users in banned_users %}
-        <p>{{ users.username }}</p>
+        <a href="#"><p>{{ users.username }}</p></a>
         {% empty %}
           <p>No users are banned from this activity</p>
       {% endfor %}

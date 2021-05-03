@@ -75,8 +75,24 @@ html, body{
   box-sizing: border-box;
 }
 
+.left_half_banned_users{
+  padding: 10px;
+  border: 1px solid navy;
+}
+
+.left_half_banned_users a{
+  display: block;
+  margin: 5px 0;
+  text-decoration: none;
+}
+
+.left_half_banned_users a:hover{
+  text-decoration: underline;
+}
+
 .left_half_header, .left_half_banned_users{
   max-height: 25%;
+  overflow: auto;
 }
 
 .left_half_members h5{
@@ -666,5 +682,9 @@ a.notextdecoration:hover{
 }
 
 .left_half_banned_users h5{
-  text-decoration: underline;
+  display: inline-block;
+}
+
+.left_half_banned_users h5{
+  border-bottom: 2px solid #563d76;
 }
