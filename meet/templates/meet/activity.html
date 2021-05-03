@@ -45,7 +45,7 @@
       {% for users in banned_users %}
       <div class="left_half_banned_users_members">
         <a href="{% url 'user_profile' users.username %}"><p>{{ users.username }}</p></a>
-        <a href="#" class="ban_lock"><i class="fas fa-lock ban-lock" title="unban user"></i></a>
+        <a href="{% url 'unban_user' users.id activity.id %}" class="ban_lock"><i class="fas fa-lock ban-lock" title="unban user"></i></a>
       </div>
         {% empty %}
           <p>No users are banned from this activity</p>

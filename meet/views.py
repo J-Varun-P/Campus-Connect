@@ -438,3 +438,15 @@ def banuser(request, u_id, a_id):
         if joining is not None:
             joining.delete()
     return redirect("display_activity", id=activity.id)
+
+
+@login_required(login_url='/')
+def unbanuser(request, u_id, a_id):
+    user = User.objects.get(pk=u_id)
+    activity = Activity.objects.get(pk=a_id)
+    if request.user == activity.user:
+        ban_user = Banneduser.objects.get(user=user, activity=activity)
+        ban_user.delete()
+        joining = Joining(user=user, activity=activity)
+        joining.save()
+    return redirect("display_activity", id=activity.id)
