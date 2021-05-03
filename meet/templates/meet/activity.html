@@ -43,7 +43,10 @@
     <div class="left_half_banned_users">
       <h5>Banned Users ({{ banned_users|length }})</h5>
       {% for users in banned_users %}
-        <a href="#"><p>{{ users.username }}</p></a>
+      <div class="left_half_banned_users_members">
+        <a href="{% url 'user_profile' users.username %}"><p>{{ users.username }}</p></a>
+        <a href="#" class="ban_lock"><i class="fas fa-lock ban-lock" title="unban user"></i></a>
+      </div>
         {% empty %}
           <p>No users are banned from this activity</p>
       {% endfor %}

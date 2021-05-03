@@ -1,5 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  if(document.querySelectorAll('.ban-lock')){
+    document.querySelectorAll('.ban-lock').forEach(item => {
+      item.onmouseover = () =>{
+        item.classList.remove('fa-lock');
+        item.classList.add('fa-unlock-alt');
+      }
+      item.onmouseout = () =>{
+        item.classList.remove('fa-unlock-alt');
+        item.classList.add('fa-lock');
+      }
+    });
+
+  }
   if(document.querySelector('#profile_form')){
   document.querySelector('#profile_form').style.display = 'none';
   document.querySelector('#updatebutton').onclick = () => {

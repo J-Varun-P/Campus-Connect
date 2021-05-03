@@ -73,17 +73,31 @@ html, body{
   border: 1px solid navy;
   overflow-y: auto;
   box-sizing: border-box;
+  border-radius: 10px;
 }
 
 .left_half_banned_users{
   padding: 10px;
   border: 1px solid navy;
+  border-radius: 10px;
 }
 
 .left_half_banned_users a{
-  display: block;
+    text-decoration: none;
+}
+
+.left_half_banned_users > *{
   margin: 5px 0;
-  text-decoration: none;
+}
+
+.left_half_banned_users_members{
+  display: flex;
+  align-items: center;
+}
+
+.left_half_banned_users_members .ban_lock{
+  font-size: 21px;
+  margin-left: auto;
 }
 
 .left_half_banned_users a:hover{
