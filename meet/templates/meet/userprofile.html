@@ -1,0 +1,16 @@
+{% extends "meet/layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block links %}
+  <script type="text/javascript" src="{% static 'meet/script.js' %}"></script>
+{% endblock %}
+{% block body %}
+  <div class="fc fc_profile">
+    <div class="form_update" id="profile_info">
+      <h4>Username: {{ username }}</h4>
+      {% for line in lines %}
+        <p>{{ line }}</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

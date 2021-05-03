@@ -1,0 +1,84 @@
+{% extends "meet/layout.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block links %}
+  <script type="text/javascript" src="{% static 'meet/script.js' %}"></script>
+{% endblock %}
+{% block body %}
+  <div class="index_page">
+    {% if messages %}
+          {% for message in messages %}
+            <div class="alert {{ message.tags }} password_change center">
+              {{ message }}
+            </div>
+          {% endfor %}
+    {% endif %}
+    <div class="searchactivities">
+      <h4>Search Results</h4>
+      {% if name != "empty_user" %}
+        <p>Username: {{ name }}</p>
+      {% endif %}
+      {% if title != "empty_title" %}
+        <p>Title contains: {{ title }}</p>
+      {% endif %}
+    </div>
+    {% for activity in activities %}
+    <!--<a href="{% url 'display_activity' activity.id %}" class="text_decoration_none">-->
+      <div class="indexpage_activity" data-id={{ activity.id }}>
+        {% if request.user == activity.user %}
+          <div class="fontawesome_icons">
+            <a href="{% url 'edit_activity' activity.id %}"><i class="far fa-edit fontawesome_edit fontawesome_common"></i></a>
+            <i data-id={{ activity.id }} class="far fa-trash-alt fontawesome_delete fontawesome_common"></i>
+          </div>
+        {% endif %}
+        <div>
+          {{ activity.user.username }}
+        </div>
+        <div>
+          {{ activity.title }}
+        </div>
+        <div class="indexpage_posted_on">
+          {{ activity.time|date:"F d, Y" }}
+        </div>
+      </div>
+      {% empty %}
+      <div class="indexpage_activity spacing">
+        <p>The User has no activities yet</p>
+      </div>
+    <!--</a>-->
+    {% endfor %}
+    <div class="pagination_links">
+
+      {% if activities.has_previous %}
+      <a class="btn btn-outline-info" href="?page=1">First</a>
+      <!--<a class="btn btn-outline-info" href="?page={{ activities.previous_page_number }}">Previous</a>-->
+      {% endif %}
+
+      {% for num in activities.paginator.page_range %}
+        {% if activities.number == num %}
+          <a id="current_pagination_link" class="btn btn-info" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > activities.number|add:'-3' and num < activities.number|add:'3' %}
+          <a class="btn btn-outline-info" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if activities.has_next %}
+      <!--<a class="btn btn-outline-info" href="?page={{ activities.next_page_number }}">Next</a>-->
+      <a class="btn btn-outline-info" href="?page={{ activities.paginator.num_pages }}">Last</a>
+      {% endif %}
+    </div>
+    <div id="delete_activity_page">
+      <div class="delete_activity_conform_page">
+        <div class="delete_activity_page_content" id="delete_activity_page_content">
+          <h4>Delete Activity!</h4>
+          <div id="closeform">
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+          </div>
+          <div id="delete_activity_page_content_js"></div>
+          <button class="btn btn-outline common_button cancel_delete">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
