@@ -71,7 +71,7 @@
           {% if request.user == activity.user and comment.user != request.user %}
             <div class="fontawesome_icons">
               <a href="{% url 'ban_user' comment.user.id comment.activity.id %}"><i class="fas fa-ban" title="ban user"></i></a>
-              <i data-id={{ comment.id }} class="far fa-trash-alt fontawesome_delete_comment fontawesome_common"></i>
+              <i title="delete comment" data-id={{ comment.id }} class="far fa-trash-alt fontawesome_delete_comment fontawesome_common"></i>
             </div>
           {% endif %}
 
