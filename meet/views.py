@@ -335,8 +335,13 @@ def displayactivity(request, id):
         if request.user in banned_users:
             messages.error(request, f"You're banned from  {activity.title}  activity")
             return redirect("index")
+        temporary = activity.description.splitlines()
+        print(temporary)
+        description = []
+        for temp_1 in temporary:
+            description.append(temp_1)
         return render(request, "meet/activity.html", {
-        "activity": activity, "users": users, "users_list": users_list, "form": form, "users_comments": users_comments, "kickuserout": kickuserout, "banned_users": banned_users
+        "activity": activity, "description": description, "users": users, "users_list": users_list, "form": form, "users_comments": users_comments, "kickuserout": kickuserout, "banned_users": banned_users
         })
 
 

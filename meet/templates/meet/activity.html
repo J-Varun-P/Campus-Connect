@@ -8,7 +8,10 @@
   <div class="left_half">
     <div class="left_half_header">
       <h4>{{ activity.title }}</h4>
-      <p>{{ activity.description }}</p>
+      <!--<p>{{ activity.description }}</p>-->
+      {% for a in description %}
+        <p> {{ a }} </p>
+      {% endfor %}
     </div>
     <div class="left_half_members">
       <div class="fc_activity">
