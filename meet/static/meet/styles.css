@@ -251,11 +251,15 @@ form{
   z-index: 2;
 }
 
-.navigation a{
+.navigation a, .navigation div.hover_links_parent{
   text-decoration: none;
   color: inherit;
   padding: 12px 24px;
   font-size: 18px;
+}
+
+.navigation div.hover_links_parent a{
+  padding: 12px 0;
 }
 
 .navigation a:hover{
@@ -632,10 +636,10 @@ p.activity_users{
 }
 
 .hover_links_parent{
-  display: flex;
+  /*display: flex;*/
   position: relative;
-  justify-content: center;
-  align-items: center;
+  /*justify-content: center;
+  align-items: center;*/
 }
 
 .hover_links{
