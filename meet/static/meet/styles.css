@@ -23,6 +23,7 @@ html, body{
   color: #563d76;
   letter-spacing: 0.1em;
   word-spacing: 0.15em;
+  flex-wrap: wrap;
 }
 
 .fc_display > *{
@@ -30,7 +31,7 @@ html, body{
 }
 
 .left_half, .right_half{
-  flex-basis: 40%;
+  flex-basis: calc(40% - 5px);
   box-sizing: border-box;
   padding: 15px;
   border: 1px solid #563d76;
@@ -39,7 +40,7 @@ html, body{
 }
 
 .right_half{
-  flex-basis: 60%;
+  flex-basis: calc(60% - 5px);
 }
 
 .left_half{
@@ -276,6 +277,9 @@ form{
   }
   .navigation > *{
     flex-basis: 25ch;
+  }
+  .left_half, .right_half{
+    min-width: 100%;
   }
 }
 
