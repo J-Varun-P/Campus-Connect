@@ -2,7 +2,7 @@
 
 ## About Project
 
-This Web Application is about helping students connect with activities which align with the student's interests.
+This Web Application is about helping students connect with activities which align with the student's interests
 
 The Activities can be of following types:
 
