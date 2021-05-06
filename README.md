@@ -43,14 +43,45 @@ This Web Application is fairly complex given the instructions in the Capstone re
 5. Creating, Editing an Activity
 6. Joining, Leaving an Activity
 7. Message board for an Activity WebPage
-8. Editing, Deleting Messages
+8. Editing, Deleting Messages in message board section of Activity WebPage
 9. Kicking the User out of an Activity if they're improper (Only the Author of an Activity can kick a user out)
 10. Banning the Users from an Activity if they make other's uncomfortable
 11. Removing an Activity (The Activity doesn't appear on the index page for other users (users who are not members of the activity) to see but the activity isn't deleted at this point yet, The Users who joined the Activity can still see this activity in the deleted activities section of the web application)
 12. Making an Activity go live from deleted section once it's removed from the index of list of activites (Non Members of the Activity can now see the activity which was invisible to them when the activity was in the deleted section)
 13. Permanently Deleting an Activity (When the Author of the Activity deletes the Activity from the deleted section of the WebPage, The Activity is deleted forever even for the members of the Activity)
 14. Pagination of Activites
-15. Updating Profiles of Users or departments of the university using the application
+15. Updating Profiles
+16. Searching for activities by providing a specific username or by providing a substring containing in the list of activities you want to search for
+17. Making sure the users don't have access to content of the Web Application that they're not authorised to by having conditions checked in views.py file
 
 
+## File Structure
+
+### Meet (Web Application name)
+
+#### Files in Meet
+
+##### meet/static/meet 
+
+1. styles.css
+
+* This File contains all the css that is used by the Web Application
+
+2. script.js
+
+* This File contains all the javascript that is used by the Web Application
+
+##### meet/templates/meet
+
+1. activity.html
+
+* This file has all the content that represents an Activity and it contains the following:
+
+1. Title of an Activity
+2. Description of an Activity
+3. Button to Join or leave Activity for users
+4. Members list of the Activity
+5. Banned Members list of the Activity
+6. Message Board and a form for inputting a message on to the board
+7. Icon links for editing messages, deleting messages, kicking a user out of the activity, banning a user from the activity
 
