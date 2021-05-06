@@ -63,17 +63,17 @@ This Web Application is fairly complex given the instructions in the Capstone re
 
 ##### meet/static/meet 
 
-1. styles.css
+###### 1. styles.css
 
 * This File contains all the css that is used by the Web Application
 
-2. script.js
+###### 2. script.js
 
 * This File contains all the javascript that is used by the Web Application
 
 ##### meet/templates/meet
 
-1. activity.html
+###### 1. activity.html
 
 * This file has all the content that represents an Activity and it contains the following:
 
@@ -87,12 +87,12 @@ This Web Application is fairly complex given the instructions in the Capstone re
 8. Icon links for editing messages, deleting messages, kicking a user out of the activity, banning a user from the activity
 
 
-2. addactivity.html
+###### 2. addactivity.html
 
 * This file contains a form to create an activity by specifying fields for activity title and activity description
 
 
-3. deletedactivities.html
+###### 3. deletedactivities.html
 
 * This file contains all the information about removed activities and it renders the following:
 
