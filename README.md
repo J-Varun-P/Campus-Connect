@@ -49,6 +49,8 @@ This Web Application is fairly complex given the instructions in the Capstone re
 11. Removing an Activity (The Activity doesn't appear on the index page for other users (users who are not members of the activity) to see but the activity isn't deleted at this point yet, The Users who joined the Activity can still see this activity in the deleted activities section of the web application)
 12. Making an Activity go live from deleted section once it's removed from the index of list of activites (Non Members of the Activity can now see the activity which was invisible to them when the activity was in the deleted section)
 13. Permanently Deleting an Activity (When the Author of the Activity deletes the Activity from the deleted section of the WebPage, The Activity is deleted forever even for the members of the Activity)
+14. Pagination of Activites
+15. Updating Profiles of Users or departments of the university using the application
 
 
 
