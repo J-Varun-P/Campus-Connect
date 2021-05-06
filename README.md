@@ -79,9 +79,22 @@ This Web Application is fairly complex given the instructions in the Capstone re
 
 1. Title of an Activity
 2. Description of an Activity
-3. Button to Join or leave Activity for users
-4. Members list of the Activity
-5. Banned Members list of the Activity
-6. Message Board and a form for inputting a message on to the board
-7. Icon links for editing messages, deleting messages, kicking a user out of the activity, banning a user from the activity
+3. Author of an Activity
+4. Button to Join or leave Activity for users
+5. Members list of the Activity
+6. Banned Members list of the Activity
+7. Message Board and a form for inputting a message on to the board
+8. Icon links for editing messages, deleting messages, kicking a user out of the activity, banning a user from the activity
 
+
+2. addactivity.html
+
+* This file contains a form to create an activity by specifying fields for activity title and activity description
+
+
+3. deletedactivities.html
+
+* This file contains all the information about removed activities and it renders the following:
+
+1. List of all the activities that have been removed but the user happens to be a member of the activity or the author of the activity
+2. Icon links for editing the activity information or permanently deleting the activity
