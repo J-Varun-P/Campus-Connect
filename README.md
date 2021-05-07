@@ -54,6 +54,8 @@ This Web Application is fairly complex given the instructions in the Capstone re
 16. Searching for activities by providing a specific username or by providing a substring containing in the list of activities you want to search for.
 17. Making sure the users don't have access to content of the Web Application that they're not authorised to by having conditions checked in views.py file.
 
+* All the above features add to the complexity of the Web Application and I believe that it does justice to the complexity requirement of the Capstone Project. 
+
 
 ## File Structure
 
