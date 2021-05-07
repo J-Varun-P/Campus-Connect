@@ -164,3 +164,18 @@ This Web Application is fairly complex given the instructions in the Capstone re
 ###### 15. profile.html
 
 * This file renders a profile page of a user which displays their username and description, The user can edit their profile to write about themselves.
+
+
+###### 16. register.html
+
+* This file renders a page where a new user can register themselves for the Web Application.
+
+
+###### 17. searchactivities.html
+
+* This file renders a page of list of activities paginated confined by the user's search parameters in the index page.
+
+
+###### 18. userprofile.html
+
+* This file renders a profile page of a user.
