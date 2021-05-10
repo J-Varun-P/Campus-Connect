@@ -6,7 +6,7 @@ This Web Application is about helping students connect with activities which ali
 
 The Activities can be of following types:
 
-* Organizing an event and letting users participate. 
+* Organizing an event and letting users participate.
 * Finding a Study Partner or Sports partner.
 * A WebPage of an Activity dedicated to the discussions of certain subjects.
 
@@ -16,17 +16,17 @@ The Author of the Activity holds some previleges which allows them to:
 
 * Delete a message made on an activity if the message contents made by a participating student seem inappropriate.
 * Kick a User out of an Activity if their behaviour is improper.
-* Ban the user from interacting with an activity if the User makes the other participants uncomfortable. 
+* Ban the user from interacting with an activity if the User makes the other participants uncomfortable.
 
 ## Why I believe this Project Satisfies the Distinctiveness and Complexity mentioned in the Capstone requirements
 
-### Distinctiveness 
+### Distinctiveness
 
 1. This Web Application is different from a social network and the reasoning is the following:
 
-* The thing that makes a social network a social network is that the users can post anything that's on their mind (as long as they're respectful) (Take Twitter for example or some other social network), The user is not confined to post only posts that satisfy specific requirements,  they can post anything that's on their mind no matter what the subject of the post happens to be. This Web Application on the other hand lets you interact with activites created by other students or deparments of a university. The Activity needs to be well defined as to what it is, An Activity can be a discussion on a specific subject where the users can clarify a range of doubts they have on a specific part of that subject, or an Activity can be an event where the organizing team of the activity can define what an activity is and let the users to participate in the activity and answer student's questions if they happen to have any, or an Activity can be a place where you can meet like minded people for a sporting event or for a study partner. I think these reasons make my application differ from a social network.
+* The thing that makes a social network a social network is that the users can post anything that's on their mind (as long as they're respectful) (Take Twitter for example or some other social network), The user is not confined to post only posts that satisfy specific requirements,  they can post anything that's on their mind no matter what the subject of the post happens to be. This Web Application on the other hand lets you interact with activities created by other students or departments of a university. The Activity needs to be well defined as to what it is, An Activity can be a discussion on a specific subject where the users can clarify a range of doubts they have on a specific part of that subject, or an Activity can be an event where the organizing team of the activity can define what an activity is and let the users to participate in the activity and answer student's questions if they happen to have any, or an Activity can be a place where you can meet like minded people for a sporting event or for a study partner. I think these reasons make my application differ from a social network.
 
-2. This Web Applicaiton is not an e-commerce site which was the second requirement to be met and the reasoning is the following:
+2. This Web Application is not an e-commerce site which was the second requirement to be met and the reasoning is the following:
 
 * This Web Application doesn't let users buy or sell products which is what an e-commerce Web Application does, This Web Application is not business oriented which satisfies the second requirement (The Web Application should not resemble an e-commerce site).
 
@@ -47,14 +47,14 @@ This Web Application is fairly complex given the instructions in the Capstone re
 9. Kicking the User out of an Activity if they're improper (Only the Author of an Activity can kick a user out).
 10. Banning the Users from an Activity if they make other's uncomfortable.
 11. Removing an Activity (The Activity doesn't appear on the index page for other users (users who are not members of the activity) to see but the activity isn't deleted at this point yet, The Users who joined the Activity can still see this activity in the deleted activities section of the web application).
-12. Making an Activity go live from deleted section once it's removed from the index of list of activites (Non Members of the Activity can now see the activity which was invisible to them when the activity was in the deleted section).
+12. Making an Activity go live from deleted section once it's removed from the index of list of activities (Non Members of the Activity can now see the activity which was invisible to them when the activity was in the deleted section).
 13. Permanently Deleting an Activity (When the Author of the Activity deletes the Activity from the deleted section of the WebPage, The Activity is deleted forever even for the members of the Activity).
-14. Pagination of Activites.
+14. Pagination of Activities.
 15. Updating Profiles.
 16. Searching for activities by providing a specific username or by providing a substring containing in the list of activities you want to search for.
 17. Making sure the users don't have access to content of the Web Application that they're not authorised to by having conditions checked in views.py file.
 
-* All the above features add to the complexity of the Web Application and I believe that it does justice to the complexity requirement of the Capstone Project. 
+* All the above features add to the complexity of the Web Application and I believe that it does justice to the complexity requirement of the Capstone Project.
 
 
 ## File Structure
@@ -63,7 +63,7 @@ This Web Application is fairly complex given the instructions in the Capstone re
 
 #### Files in Meet
 
-##### meet/static/meet 
+##### meet/static/meet
 
 ###### 1. styles.css
 
