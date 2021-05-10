@@ -241,6 +241,9 @@ def deletedactivities(request):
             users_list.append(user.user)
         if request.user in users_list:
             deleted_list.append(a.activity)
+    if len(deleted_list) == 0:
+        messages.success(request, f'You have no deleted activities!')
+        return redirect('index')
     paginator = Paginator(deleted_list, 2)
     page_num = request.GET.get('page')
     page_obj = paginator.get_page(page_num)
