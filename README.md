@@ -1,4 +1,4 @@
-# CS50W Capstone (Final Project)
+# Campus Connect
 
 ## About Project
 
