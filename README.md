@@ -180,4 +180,4 @@ This Web Application is fairly complex given the instructions in the Capstone re
 
 ###### 18. userprofile.html
 
-* This file renders a profile page of a user.
+* This file renders a profile page of a user. 
