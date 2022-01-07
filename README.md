@@ -18,6 +18,8 @@ The Author of the Activity holds some previleges which allows them to:
 * Kick a User out of an Activity if their behaviour is improper.
 * Ban the user from interacting with an activity if the User makes the other participants uncomfortable.
 
+Video description of the Project can be found at [My YouTube link for Campus Connect](https://youtu.be/xTIUp4KigPc)
+
 ## Why I believe this Project Satisfies the Distinctiveness and Complexity mentioned in the Capstone requirements
 
 ### Distinctiveness
